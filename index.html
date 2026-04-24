@@ -98,7 +98,7 @@ nav {
   opacity: 0; animation: fadeUp .7s .25s forwards;
 
 }
-.hero-logo img { width: 480px; height: auto; }
+.hero-logo img { width: 960px; height: auto; }
 
 .hero-badge {
   font-size: 9.5px; letter-spacing: 3.5px; text-transform: uppercase;
@@ -329,7 +329,8 @@ footer {
   nav { padding: 0 20px; }
   .wrap { padding: 64px 24px; }
   .hero-content { padding: 0 24px 100px; max-width: 100%; }
-  .hero-logo { display: none; }
+  .hero-logo { bottom: 12px !important; right: 8px !important; opacity: 0.75; }
+  .hero-logo img { width: 110px !important; height: auto; }
   .what-grid, .principles-grid, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
   .what-tagline { grid-column: 1; }
   .framework-grid, .access-grid { grid-template-columns: 1fr; }
@@ -341,7 +342,7 @@ footer {
 }
 
 
-  .hero-logo img { width: 120px; height: auto; }
+  .hero-logo img { width: 960px; height: auto; }
   .hero-content { padding-bottom: 80px; }
 }
 
@@ -398,7 +399,8 @@ footer {
   .ticker-strip::-webkit-scrollbar { display: none; }
   .ticker-item { flex-shrink: 0; }
   
-  .hero-logo { display: none; }
+  .hero-logo { bottom: 12px !important; right: 8px !important; opacity: 0.75; }
+  .hero-logo img { width: 110px !important; height: auto; }
   .hero-content { padding: 0 20px 72px; max-width: 100%; }
   .hero-title { font-size: clamp(34px, 8.5vw, 52px); line-height: 1.05; }
   
@@ -415,7 +417,7 @@ footer {
 }
 
 @media (max-width: 480px) {
-  .hero-logo img { width: 80px !important; }
+  .hero-logo img { width: 960px; height: auto; }
   .hero-content { padding: 0 16px 56px !important; }
 }
 </style>
@@ -434,6 +436,9 @@ footer {
     <a href="institutional-overview.html">Institutional</a>
     <a href="#contact">Contact</a>
     <a href="#access" class="nav-cta">Request Access</a>
+  </div>
+  <div class="nav-hamburger" onclick="toggleMenuNav()">
+    <span></span><span></span><span></span>
   </div>
 </nav>
 
@@ -657,6 +662,18 @@ document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
 <script>
 function toggleMenu() {
+  document.querySelector('.nav-links').classList.toggle('open');
+}
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.nav-links a').forEach(function(a) {
+    a.addEventListener('click', function() {
+      document.querySelector('.nav-links').classList.remove('open');
+    });
+  });
+});
+</script>
+<script>
+function toggleMenuNav() {
   document.querySelector('.nav-links').classList.toggle('open');
 }
 document.addEventListener('DOMContentLoaded', function() {
