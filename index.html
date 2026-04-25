@@ -41,7 +41,7 @@ nav {
   backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--gold-dim);
 }
-.nav-logo img { height: 48px; }
+.nav-logo img { height: 72px; }
 .nav-links { display: flex; gap: 36px; align-items: center; }
 .nav-links a {
   color: rgba(255,255,255,0.73);
@@ -98,7 +98,7 @@ nav {
   opacity: 0; animation: fadeUp .7s .25s forwards;
 
 }
-.hero-logo img { width: 960px; height: auto; }
+.hero-logo img { width: 380px; height: auto; }
 
 .hero-badge {
   font-size: 9.5px; letter-spacing: 3.5px; text-transform: uppercase;
@@ -327,7 +327,7 @@ footer {
 /* ── RESPONSIVE ── */
 
 
-  .hero-logo img { width: 960px; height: auto; }
+  .hero-logo img { width: 380px; height: auto; }
   .hero-content { padding-bottom: 80px; }
 }
 
@@ -338,11 +338,11 @@ footer {
 }
 .perf-pct {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 0.35em;
+  font-size: 0.45em;
   font-weight: 700;
   line-height: 1;
-  margin-bottom: 0.6em;
-  margin-left: 2px;
+  margin-bottom: 0.55em;
+  margin-left: 3px;
 }
 
 
@@ -359,7 +359,7 @@ footer {
 
   /* ── NAV ── */
   nav { padding: 0 16px; height: 60px; }
-  .nav-logo img { height: 30px; }
+  .nav-logo img { height: 72px; }
   .nav-links { display: none; }
   .nav-links.open {
     display: flex; flex-direction: column;
@@ -425,7 +425,9 @@ footer {
   .access-table th, .access-table td { padding: 12px 14px; font-size: 12px; }
 
   /* ── FOOTER ── */
-  footer { flex-direction: column; gap: 24px; text-align: center; padding: 36px 20px; }
+  footer { flex-direction: column; gap: 16px; text-align: center; padding: 24px 16px; overflow: hidden; }
+  footer .footer-links { flex-wrap: wrap; justify-content: center; gap: 12px; }
+  footer .footer-copy { font-size: 9px; word-break: break-word; }
   .footer-logo img { height: 100px; }
 }
 
@@ -433,12 +435,20 @@ footer {
   .hero-title { font-size: clamp(28px, 8vw, 40px) !important; }
   .perf-value { font-size: 30px !important; }
 }
-
-
-@media (max-width: 768px) {
-  .hero-logo { display: block !important; bottom: 6px !important; right: 8px !important; opacity: 0.70; }
-  .hero-logo img { width: 100px !important; height: auto; }
-  .hero-content { padding: 0 20px 60px !important; }
+.perf-period {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 42px !important;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--white);
+  display: flex !important;
+  align-items: center;
+  gap: 4px;
+}
+.perf-period-sep {
+  font-size: 0.5em;
+  opacity: 0.4;
+  margin: 0 2px;
 }
 </style>
 </head>
@@ -591,7 +601,7 @@ footer {
       </div>
       <div class="perf-card">
         <div class="perf-label">Period</div>
-        <div class="perf-value" style="font-size:28px;line-height:1.2;letter-spacing:-1px">2000<span style="font-size:0.6em;opacity:0.5;margin:0 3px">–</span>2025</div>
+        <div class="perf-value perf-period">2000<span class="perf-period-sep">–</span>2025</div>
         <div class="perf-sub">Backtested</div>
       </div>
     </div>
