@@ -303,7 +303,6 @@ footer {
   .hero-content { padding-bottom: 80px; }
 }
 
-.perf-value { line-height: 1; }
 
 
 
@@ -376,7 +375,7 @@ footer {
   .perf-wrap { padding: 40px 12px !important; max-width: 100vw; }
   .perf-card { padding: 24px 18px; }
   .perf-label { font-size: 9px !important; letter-spacing: 1.5px; white-space: nowrap; }
-  .perf-value { font-size: 36px !important; }
+  .perf-value { font-size: 40px !important; }
   .perf-sub { font-size: 12px !important; margin-top: 10px; }
 
   /* ── ACCESS TABLE ── */
@@ -393,34 +392,36 @@ footer {
 
 @media (max-width: 480px) {
   .hero-title { font-size: clamp(28px, 8vw, 40px) !important; }
-  .perf-value { font-size: 30px !important; }
+  .perf-value { font-size: 34px !important; }
 }
 
 
-.perf-period {
+
+
+.perf-value {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 42px !important;
+  font-size: 52px;
   font-weight: 600;
   line-height: 1;
   color: var(--white);
-  display: flex !important;
+}
+.perf-pct {
+  font-size: 0.38em;
+  font-weight: 700;
+  position: relative;
+  top: -0.75em;
+  margin-left: 2px;
+  line-height: 0;
+}
+.perf-period {
+  font-size: 42px !important;
+  display: flex;
   align-items: center;
   gap: 4px;
 }
 .perf-period-sep {
-  font-size: 0.5em;
+  font-size: 0.55em;
   opacity: 0.4;
-  margin: 0 2px;
-}
-
-.perf-pct {
-  font-size: 0.42em;
-  font-weight: 700;
-  position: relative;
-  top: -0.7em;
-  margin-left: 2px;
-  line-height: 0;
-  font-family: 'Cormorant Garamond', serif;
 }
 </style>
 </head>
@@ -639,11 +640,11 @@ footer {
 </div>
 
 <!-- PERFORMANCE (marble bg) -->
-<div class="perf-bg">
+<div id="performance" class="perf-bg">
   <div class="perf-marble"></div>
   <div class="perf-marble-overlay"></div>
   <div class="perf-wrap">
-    <div class="section-label">Performance <span style="font-size:8.5px;opacity:.38;letter-spacing:1px">&nbsp;Indicative · Backtested</span></div>
+    <div class="section-label">Performance <span style="font-size:8.5px;opacity:.4;letter-spacing:1px">&nbsp;Indicative · Backtested</span></div>
     <div class="perf-numbers reveal">
       <div class="perf-card">
         <div class="perf-label">CAGR</div>
@@ -663,11 +664,14 @@ footer {
       <div class="perf-card">
         <div class="perf-label">Period</div>
         <div class="perf-value perf-period">2000<span class="perf-period-sep">–</span>2025</div>
-        <div class="perf-sub">Backtested · 4 strategies</div>
+        <div class="perf-sub">Backtested</div>
       </div>
     </div>
     <div class="perf-disclaimer reveal">
       Model-based backtested results (2000–2025). Aggregate portfolio across four strategy modules with €100,000 reference capital each. Results reflect end-of-day signal execution at closing prices. Slippage and transaction costs are not modelled. Past performance does not guarantee future results. Full methodology and strategy-level data available upon request.
+    </div>
+    <div class="perf-cta reveal">
+      <a href="index.html" class="btn-ghost" style="border-color:rgba(197,179,88,0.3);color:rgba(255,255,255,0.81)">← Back to Home</a>
     </div>
   </div>
 </div>
