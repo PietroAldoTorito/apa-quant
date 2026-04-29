@@ -330,7 +330,7 @@ footer {
 @media (max-width: 768px) {
 
   nav { padding: 0 16px; height: 60px; }
-  .nav-logo img { height: 36px; }
+  .nav-logo img { height: 56px; }
   .nav-links { display: none; }
   .nav-links.open {
     display: flex; flex-direction: column;
@@ -383,14 +383,10 @@ footer {
   .strat-grid { grid-template-columns: 1fr !important; }
 
   /* ── PERFORMANCE GRID ── */
-  .perf-numbers { grid-template-columns: 1fr 1fr !important; gap: 1px; }
-  .perf-wrap { padding: 40px 12px !important; max-width: 100vw; }
-  .perf-card { padding: 24px 18px; }
   .perf-label { font-size: 9px !important; letter-spacing: 1.5px; white-space: nowrap; }
-  .perf-sub { font-size: 12px !important; margin-top: 10px; }
 
   /* ── ACCESS TABLE ── */
-  .access-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; width: 100%; display: block; }
+  .access-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; width: 100%; max-width: calc(100vw - 40px); display: block; }
   .access-table { min-width: 480px; }
   .access-table th, .access-table td { padding: 12px 14px; font-size: 12px; }
 
@@ -398,22 +394,18 @@ footer {
   footer { flex-direction: column; gap: 16px; text-align: center; padding: 24px 16px; }
   footer .footer-links { flex-wrap: wrap; justify-content: center; gap: 12px; }
   footer .footer-copy { font-size: 10px; }
-  footer .footer-links { flex-wrap: wrap; justify-content: center; gap: 12px; }
-  footer .footer-copy { font-size: 9px; word-break: break-word; }
   .footer-logo img { height: 100px; }
-  /* perf mobile */
+  .footer-logo img { height: 100px; }
+
+  /* perf mobile 768 */
   .perf-numbers { grid-template-columns: 1fr 1fr !important; gap: 1px; }
-  .perf-wrap { padding: 40px 12px !important; }
-  .perf-card { padding: 22px 16px; }
-  .perf-label { font-size: 9px; white-space: nowrap; }
-  .perf-sub { font-size: 12px; margin-top: 8px; }
+  .perf-wrap { padding: 36px 12px !important; max-width: 100%; overflow: hidden; }
+  .perf-card { padding: 20px 14px; min-width: 0; overflow: hidden; }
+  .perf-value { font-size: 34px !important; }
+  .perf-period { font-size: 52px; font-family: 'Cormorant Garamond', serif; font-weight: 600; line-height: 1; color: var(--white); }
+  .perf-sub { font-size: 11px; margin-top: 8px; }
+  .perf-label { font-size: 8px !important; white-space: nowrap; letter-spacing: 1px; }
 
-  .perf-value { font-size: 36px !important; }
-
-}
-
-@media (max-width: 480px) {
-  .hero-title { font-size: clamp(28px, 8vw, 40px) !important; }
 }
 
 
@@ -423,21 +415,32 @@ footer {
 .perf-card { background: rgba(0,12,28,0.72); border: 1px solid rgba(197,179,88,0.14); padding: 38px 30px; backdrop-filter: blur(4px); transition: background .3s; }
 .perf-card:hover { background: rgba(197,179,88,0.07); }
 .perf-label { font-size: 9px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: rgba(255,255,255,0.38); margin-bottom: 14px; white-space: nowrap; }
-.perf-value { font-family: 'Cormorant Garamond', serif; font-size: 52px; font-weight: 600; line-height: 1; color: var(--white); }
-.perf-value.green { color: #72c48a; }
-.perf-value.red   { color: #e88080; }
-.perf-pct { font-size: 0.40em; font-weight: 700; display: inline-block; vertical-align: 0.40em; margin-left: 1px; line-height: 1; }
-.perf-period { font-size: 52px; }
-.perf-period-sep { font-size: 0.55em; opacity: 0.4; margin: 0 3px; }
 .perf-sub { margin-top: 16px; font-size: 13px; color: rgba(255,255,255,0.35); font-weight: 300; }
 .perf-disclaimer { margin-top: 28px; padding: 15px 18px; border-left: 2px solid rgba(197,179,88,0.30); font-size: 13px; line-height: 1.72; color: rgba(255,255,255,0.45); font-style: italic; }
-</style>
-</head>
-<body>
 
-<!-- NAV -->
-<nav>
-  <div class="nav-logo">
+/* ── PERFORMANCE GLOBAL ── */
+.perf-value {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 52px;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--white);
+}
+.perf-value.green { color: #72c48a; }
+.perf-value.red   { color: #e88080; }
+.perf-pct {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.38em;
+  font-weight: 700;
+  display: inline-block;
+  vertical-align: 0.28em;
+  line-height: 0;
+  margin-left: 1px;
+}
+.perf-period { font-size: 52px; font-family: 'Cormorant Garamond', serif; font-weight: 600; line-height: 1; color: var(--white); }
+.perf-period-sep { font-size: 0.5em; opacity: 0.4; margin: 0 3px; }
+
+<div class="nav-logo">
     <img data-logo="1" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="APA Quant">
   </div>
   <div class="nav-links">
@@ -672,22 +675,17 @@ document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 </script>
 
 <script>
-(function() {
-  window.toggleNav = function toggleNav() {
-    var links = document.querySelector('.nav-links');
-    if (links) links.classList.toggle('open');
-  }
-  document.addEventListener('DOMContentLoaded', function() {
-    var btn = document.querySelector('.nav-hamburger');
-    if (btn) btn.addEventListener('click', toggleNav);
-    document.querySelectorAll('.nav-links a').forEach(function(a) {
-      a.addEventListener('click', function() {
-        var links = document.querySelector('.nav-links');
-        if (links) links.classList.remove('open');
-      });
+function toggleNav() {
+  var links = document.querySelector('.nav-links');
+  if (links) links.classList.toggle('open');
+}
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.nav-links a').forEach(function(a) {
+    a.addEventListener('click', function() {
+      document.querySelector('.nav-links').classList.remove('open');
     });
   });
-})();
+});
 </script>
 <script>
 (function(){
