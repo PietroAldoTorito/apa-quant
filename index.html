@@ -139,7 +139,7 @@ nav {
 .hero-qualifier {
   margin-top: 14px; font-size: 9.5px; letter-spacing: 1.5px;
   color: rgba(255,255,255,0.68); text-transform: uppercase;
-  opacity: 1; animation: fadeUp .6s .8s forwards;
+  opacity: 0; animation: fadeUp .6s .8s forwards;
 }
 .hero-rule {
   position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
@@ -151,23 +151,12 @@ nav {
   background: rgba(0,20,45,0.96);
   border-bottom: 1px solid rgba(197,179,88,0.12);
   padding: 0 64px; height: 50px;
-  display: none; align-items: center; gap: 56px; overflow: hidden;
+  display: flex; align-items: center; gap: 56px; overflow: hidden;
 }
 .ticker-item { display: flex; align-items: center; gap: 10px; white-space: nowrap; flex-shrink: 0; }
 .t-label { font-size: 9px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.74); }
-.t-val { font-family: 'Cormorant Garamond', serif; font-size: 16px; font-weight: 600; color: rgba(197,179,88,0.75);
-       }
+.t-val { font-family: 'Cormorant Garamond', serif; font-size: 16px; font-weight: 600; color: rgba(197,179,88,0.75); }
 
-  /* FORZA VISIBILITÀ */
-section, div, header, body, main {
-    opacity: 1 !important;
-    visibility: visible !important;
-}
-
-#loading-screen {
-    display: none !important;
-}
-  
 /* ── SHARED ── */
 .wrap { max-width: 1180px; margin: 0 auto; padding: 96px 64px; }
 .section-divider { height: 1px; background: rgba(197,179,88,0.1); max-width: 1180px; margin: 0 auto; }
