@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>APA ETF Signals — Methodology</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* Tavolozza identica a index.html — letta dal sorgente il 21/09/2026 */
+:root {
+  --navy:      #002B5B;
+  --navy-deep: #001428;
+  --navy-mid:  #01366e;
+  --gold:      #C5B358;
+  --gold-lt:   #d9c97a;
+  --gold-dim:  rgba(197,179,88,0.18);
+  --white:     #ffffff;
+  --off-white: #f4f3ef;
+  --text:      #1a1a2e;
+  --text-mid:  #444460;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  background: var(--navy-deep);
+  color: var(--white);
+  overflow-x: hidden;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 60px; height: 72px;
+  background: rgba(0,12,28,0.94);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--gold-dim);
+}
+.nav-logo img { height: 44px; display: block; }
+.nav-links { display: flex; gap: 36px; align-items: center; }
+.nav-links a {
+  color: rgba(255,255,255,0.73); text-decoration: none; font-size: 10px;
+  font-weight: 600; letter-spacing: 2.2px; text-transform: uppercase;
+  transition: color .25s;
+}
+.nav-links a:hover { color: var(--gold); }
+.nav-cta {
+  border: 1px solid rgba(197,179,88,0.45) !important;
+  color: var(--gold) !important; padding: 8px 20px;
+  font-size: 9.5px !important; letter-spacing: 2px !important;
+}
+.nav-cta:hover { background: rgba(197,179,88,0.08); color: var(--gold-lt) !important; }
+
+/* ── HEAD ── */
+.page-head { padding: 150px 64px 60px; max-width: 1180px; margin: 0 auto; }
+.page-badge {
+  font-size: 9.5px; letter-spacing: 3.5px; text-transform: uppercase;
+  color: rgba(197,179,88,0.7); font-weight: 600; margin-bottom: 24px;
+}
+.page-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(38px, 5vw, 62px); line-height: 1.08;
+  font-weight: 600; color: var(--white);
+}
+.page-title em { font-style: italic; color: var(--gold); }
+.page-sub {
+  margin-top: 24px; font-size: 16px; font-weight: 300; line-height: 1.8;
+  color: rgba(255,255,255,0.70); max-width: 62ch;
+}
+.page-rule { height: 2px; background: linear-gradient(90deg, var(--gold) 0%, rgba(197,179,88,0) 55%); }
+
+/* ── SECTIONS ── */
+.wrap { max-width: 1180px; margin: 0 auto; padding: 72px 64px; }
+.section-divider { height: 1px; background: rgba(197,179,88,0.1); max-width: 1180px; margin: 0 auto; }
+.section-label {
+  font-size: 9.5px; font-weight: 700; letter-spacing: 3.5px; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 40px; display: flex; align-items: center; gap: 16px;
+}
+.section-label::after { content: ''; flex: 1; height: 1px; background: rgba(197,179,88,0.18); }
+
+h2.lead {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 31px; font-weight: 300; line-height: 1.45;
+  color: var(--white); margin-bottom: 26px; max-width: 30ch;
+}
+h2.lead strong { color: var(--gold); font-weight: 600; }
+.body { font-size: 16px; line-height: 1.9; color: rgba(255,255,255,0.70); font-weight: 300; max-width: 68ch; }
+.body p + p { margin-top: 18px; }
+.body strong { color: rgba(255,255,255,0.92); font-weight: 600; }
+.cols { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+
+.sublabel {
+  font-size: 10.5px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase;
+  color: var(--gold); margin: 26px 0 8px;
+}
+.tick {
+  font-size: 15px; line-height: 2; color: rgba(255,255,255,0.78); font-weight: 300;
+  letter-spacing: .5px;
+}
+
+/* ── TABLES ── */
+table { width: 100%; border-collapse: collapse; margin: 18px 0 10px; }
+th {
+  text-align: left; font-size: 9.5px; letter-spacing: 2.2px; text-transform: uppercase;
+  color: var(--gold); border-bottom: 1px solid rgba(197,179,88,0.22);
+  padding: 12px 12px 12px 0; font-weight: 700;
+}
+td {
+  padding: 13px 12px 13px 0; border-bottom: 1px solid rgba(255,255,255,0.07);
+  color: rgba(255,255,255,0.78); font-size: 15px; font-weight: 300;
+}
+td.n, th.n { text-align: right; font-variant-numeric: tabular-nums; padding-right: 0; }
+td.n { font-family: 'Cormorant Garamond', serif; font-size: 19px; font-weight: 600;
+       color: rgba(255,255,255,0.92); }
+.up { color: #8fce9e !important; }
+.down { color: #d98b8b !important; }
+
+/* ── CARDS ── */
+.card {
+  background: rgba(255,255,255,0.028);
+  border: 1px solid rgba(197,179,88,0.09);
+  border-left: 2px solid var(--gold);
+  padding: 32px 36px; margin: 28px 0;
+}
+.card h3 {
+  font-family: 'Cormorant Garamond', serif; font-size: 24px;
+  font-weight: 600; color: var(--gold-lt); margin-bottom: 14px;
+}
+.card .body { max-width: none; }
+.note { font-size: 14px; line-height: 1.8; color: rgba(255,255,255,0.52); font-weight: 300; margin-top: 14px; }
+
+footer {
+  border-top: 1px solid rgba(197,179,88,0.1);
+  padding: 44px 64px 64px; max-width: 1180px; margin: 0 auto;
+  font-size: 13px; color: rgba(255,255,255,0.45); font-weight: 300; line-height: 1.9;
+}
+footer a { color: rgba(255,255,255,0.68); text-decoration: none; }
+footer a:hover { color: var(--gold); }
+
+@media (max-width: 860px) {
+  nav { padding: 0 24px; }
+  .nav-links { gap: 18px; }
+  .page-head { padding: 120px 24px 44px; }
+  .wrap { padding: 52px 24px; }
+  .cols { grid-template-columns: 1fr; gap: 32px; }
+  .card { padding: 24px 22px; }
+  footer { padding: 36px 24px 52px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html"><img src="APA_Logo_Trasparente_fixed.png" alt="APA Quant"></a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="overview.html">Institutional</a>
+    <a class="nav-cta" href="index.html#access">See Plans</a>
+  </div>
+</nav>
+
+<div class="page-head">
+  <div class="page-badge">APA ETF Signals · Methodology</div>
+  <h1 class="page-title">Every rule, every parameter,<br><em>and what it cost.</em></h1>
+  <p class="page-sub">This page exists so you can check our work before you pay for it.
+  The universe is listed. The parameters are published. The results are stated as a range
+  rather than a best case, and the one crash this model failed to protect against is
+  described in as much detail as the ones it handled.</p>
+</div>
+<div class="page-rule"></div>
+
+<section><div class="wrap">
+  <div class="section-label">What you receive</div>
+  <div class="cols">
+    <h2 class="lead">A portfolio of four ETFs, reviewed <strong>once a month</strong>.</h2>
+    <div class="body">
+      <p>Four US-listed ETFs, equally weighted at 25% each, reviewed every 21 trading
+      sessions. When the portfolio changes you receive the new holdings and the trades
+      required to get there, through a private Telegram channel.</p>
+      <p>Between reviews there is nothing to do and nothing is sent. Long stretches of
+      silence are the normal state of this model, not a gap in the service.</p>
+    </div>
+  </div>
+</div></section>
+
+<div class="section-divider"></div>
+
+<section><div class="wrap">
+  <div class="section-label">The universe</div>
+  <div class="cols">
+    <h2 class="lead">Thirty-two liquid ETFs. <strong>Fixed.</strong></h2>
+    <div class="body">
+      <p>The model may only ever hold these, and the list does not change. Every one was
+      already trading before the backtest begins — which is why survivorship bias, the
+      flaw that quietly inflates most published backtests, cannot occur here.</p>
+    </div>
+  </div>
+  <div class="cols" style="margin-top:36px">
+    <div>
+      <div class="sublabel">US equity</div>
+      <div class="tick">SPY · QQQ · IWM · DIA · MDY</div>
+      <div class="sublabel">International equity</div>
+      <div class="tick">EFA · EEM · EWJ · EWZ · FXI</div>
+      <div class="sublabel">US sectors</div>
+      <div class="tick">XLB · XLE · XLF · XLI · XLK<br>XLP · XLU · XLV · XLY</div>
+    </div>
+    <div>
+      <div class="sublabel">Industries</div>
+      <div class="tick">SMH · XBI · XOP · KRE · XHB · ITB</div>
+      <div class="sublabel">Commodities</div>
+      <div class="tick">GLD · SLV · USO · DBC</div>
+      <div class="sublabel">Credit</div>
+      <div class="tick">LQD · HYG · TIP</div>
+    </div>
+  </div>
+</div></section>
+
+<div class="section-divider"></div>
+
+<section><div class="wrap">
+  <div class="section-label">The rules</div>
+  <div class="cols">
+    <h2 class="lead">Momentum decides what is <strong>eligible</strong>. Reversal decides what is <strong>bought</strong>.</h2>
+    <div class="body">
+      <p>At each review, the eight ETFs with the strongest twelve-month return are
+      selected — excluding the most recent month. That exclusion is deliberate: the last
+      month behaves differently from the eleven before it.</p>
+      <p>Among those eight, the four that have fallen most over the previous five
+      sessions are held. The model buys strength that has just paused, not strength that
+      has just run.</p>
+      <p>A <strong>regime filter</strong> sits above both. When the benchmark trades below its
+      200-day average at a review date, the portfolio moves entirely to cash and stays
+      there until a later review says otherwise.</p>
+      <p>Equal weights. Long only. No leverage. No discretion at any point.</p>
+    </div>
+  </div>
+
+  <div class="sublabel" style="margin-top:44px">Parameters — published and frozen</div>
+  <table>
+    <tr><th>Parameter</th><th class="n">Value</th><th style="padding-left:32px">Source</th></tr>
+    <tr><td>Momentum lookback</td><td class="n">252</td><td style="padding-left:32px">Jegadeesh &amp; Titman, 1993</td></tr>
+    <tr><td>Momentum skip</td><td class="n">21</td><td style="padding-left:32px">Jegadeesh &amp; Titman, 1993</td></tr>
+    <tr><td>Reversal lookback</td><td class="n">5</td><td style="padding-left:32px">Lehmann 1990 · Lo &amp; MacKinlay 1990</td></tr>
+    <tr><td>Candidate pool</td><td class="n">8</td><td style="padding-left:32px">—</td></tr>
+    <tr><td>Positions held</td><td class="n">4</td><td style="padding-left:32px">—</td></tr>
+    <tr><td>Review interval</td><td class="n">21</td><td style="padding-left:32px">—</td></tr>
+    <tr><td>Regime average</td><td class="n">200</td><td style="padding-left:32px">—</td></tr>
+  </table>
+  <p class="note">Values are trading sessions. They were taken from the published research
+  before the strategy was tested, not chosen because they performed well. We re-optimised
+  them three times on this project; out-of-sample results were worse every time.</p>
+</div></section>
+
+<div class="section-divider"></div>
+
+<section><div class="wrap">
+  <div class="section-label">How the results are measured</div>
+  <div class="cols">
+    <h2 class="lead">The assumptions that <strong>work against</strong> the strategy, included.</h2>
+    <div class="body">
+      <p>Costs of 5 basis points per side on every trade.</p>
+      <p>Cash earns the real 3-month USD rate whenever the model is out of the market.
+      Omitting this would understate a strategy that spends time in cash — and most
+      published backtests omit it.</p>
+      <p>Signals are computed on closing prices and acted on the following session.</p>
+      <p>Period: 28 September 2007 to 18 September 2026 — the full history available for
+      this universe, 2008 included.</p>
+      <p class="note" style="max-width:none">These are backtested results. They are not an
+      executed track record: no orders were placed and no fills occurred.</p>
+    </div>
+  </div>
+</div></section>
+
+<div class="section-divider"></div>
+
+<section><div class="wrap">
+  <div class="section-label">What it did when markets fell</div>
+  <table>
+    <tr><th></th><th class="n">Strategy</th><th class="n">S&amp;P 500 ETF</th></tr>
+    <tr><td>2008 calendar year</td><td class="n up">+3.0%</td><td class="n down">−38.4%</td></tr>
+    <tr><td>Full 2007–2009 crisis</td><td class="n up">+4.6%</td><td class="n down">−55.5%</td></tr>
+    <tr><td>2022</td><td class="n up">+22.1%</td><td class="n down">−24.9%</td></tr>
+    <tr><td>Covid crash, Feb–Mar 2020</td><td class="n down">−27.9%</td><td class="n down">−33.8%</td></tr>
+  </table>
+  <p class="note">Through 2008 the strategy never traded below its starting value. The index
+  was down 47.9% at its worst point that year.</p>
+
+  <div class="card">
+    <h3>The exception</h3>
+    <div class="body">
+      <p>The 2020 crash is the one this model did not protect against, and the reason is
+      structural rather than accidental. The portfolio is reviewed every 21 sessions, so a
+      collapse that completes inside four weeks finds it fully invested with no
+      opportunity to react.</p>
+      <p>It lost 27.9% against the index's 33.8% — protection, but not much of it. It
+      finished that year up 23.4%.</p>
+    </div>
+  </div>
+</div></section>
+
+<div class="section-divider"></div>
+
+<section><div class="wrap">
+  <div class="section-label">Full period · 2007–2026</div>
+  <table>
+    <tr><th></th><th class="n">Strategy</th><th class="n">S&amp;P 500 ETF</th></tr>
+    <tr><td>Annualised return</td><td class="n">13.8%</td><td class="n">8.8%</td></tr>
+    <tr><td>Sharpe ratio</td><td class="n">0.85</td><td class="n">0.53</td></tr>
+    <tr><td>Worst drawdown</td><td class="n">−28.6%</td><td class="n">−56.5%</td></tr>
+    <tr><td>Annualised volatility</td><td class="n">16.9%</td><td class="n">19.8%</td></tr>
+    <tr><td>Years ahead of the index</td><td class="n">11 / 20</td><td class="n">—</td></tr>
+  </table>
+
+  <div class="card">
+    <h3>Why we publish a range, not that number</h3>
+    <div class="body">
+      <p>A single parameter set can flatter any strategy. We tested 54 neighbouring sets —
+      varying the lookbacks, the pool size and the number of positions — and the frozen set
+      sits at the <strong>91st percentile</strong> of that distribution.</p>
+    </div>
+    <table>
+      <tr><th></th><th class="n">Frozen set</th><th class="n">Median of 54</th><th class="n">Worst</th></tr>
+      <tr><td>Sharpe ratio</td><td class="n">0.85</td><td class="n">0.63</td><td class="n">0.23</td></tr>
+      <tr><td>Worst drawdown</td><td class="n">−28.6%</td><td class="n">−35%</td><td class="n">−51%</td></tr>
+    </table>
+    <p class="note">Treat the median as the honest expectation. There is no reason the future
+    should draw the same percentile as the past, and a service that quotes only its best
+    configuration is telling you about its luck rather than its method.</p>
+  </div>
+</div></section>
+
+<div class="section-divider"></div>
+
+<section><div class="wrap">
+  <div class="section-label">What this is not</div>
+  <div class="cols">
+    <h2 class="lead">General signals. <strong>Not advice.</strong></h2>
+    <div class="body">
+      <p>These are general signals, identical for every subscriber. They are not
+      personalised investment advice, they are not tailored to your circumstances, risk
+      tolerance or objectives, and we do not know what else you hold.</p>
+      <p>We make no forecasts and promise no returns. This strategy is not built to beat the
+      index in a rising market — it did so in 11 of 20 years — but to lose substantially
+      less when the market falls. Judge it over a full cycle, not a quarter.</p>
+      <p>Past performance and backtested results do not guarantee future results. You can
+      lose money, including on positions shown in the channel.</p>
+    </div>
+  </div>
+</div></section>
+
+<footer>
+  <p>APA Quant · <a href="mailto:apaquant@proton.me">apaquant@proton.me</a> ·
+  <a href="https://t.me/APAQuant">t.me/APAQuant</a> ·
+  <a href="index.html#access">Plans</a></p>
+  <p>Methodology last updated 21 September 2026. All figures recomputed on that date from
+  the strategy's own backtest engine.</p>
+</footer>
+
+</body>
+</html>
