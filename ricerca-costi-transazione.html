@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>I costi di transazione non sono un dettaglio trascurabile nella rotazione di portafoglio — APA Quant Ricerca</title>
+<meta name="description" content="Stessa strategia, stesse operazioni, cinque ipotesi di costo: tra 0 e 30 punti base per lato il capitale finale si dimezza. Cosa fanno i costi di transazione a una rotazione mensile di ETF, misurato.">
+<link rel="alternate" hreflang="en" href="research-transaction-costs.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --navy: #002B5B; --navy-deep: #001428; --gold: #C5B358; --gold-lt: #d9c97a;
+  --gold-dim: rgba(197,179,88,0.18); --white: #ffffff;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Montserrat', sans-serif; font-size: 16px; background: var(--navy-deep); color: var(--white); overflow-x: hidden; }
+
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between;
+  padding: 0 60px; height: 72px; background: rgba(0,12,28,0.94); backdrop-filter: blur(14px); border-bottom: 1px solid var(--gold-dim); }
+.nav-logo img { height: 44px; display: block; }
+.nav-links { display: flex; gap: 36px; align-items: center; }
+.nav-links a { color: rgba(255,255,255,0.73); text-decoration: none; font-size: 10px; font-weight: 600; letter-spacing: 2.2px; text-transform: uppercase; transition: color .25s; }
+.nav-links a:hover { color: var(--gold); }
+.nav-cta { border: 1px solid rgba(197,179,88,0.45) !important; color: var(--gold) !important; padding: 8px 20px; font-size: 9.5px !important; letter-spacing: 2px !important; }
+
+.page-head { padding: 150px 64px 56px; max-width: 980px; margin: 0 auto; }
+.page-badge { font-size: 9.5px; letter-spacing: 3.5px; text-transform: uppercase; color: rgba(197,179,88,0.7); font-weight: 600; margin-bottom: 24px; }
+.page-badge a { color: rgba(255,255,255,0.55); text-decoration: none; margin-left: 14px; letter-spacing: 2px; }
+.page-badge a:hover { color: var(--gold); }
+.page-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(36px, 5vw, 58px); line-height: 1.1; font-weight: 600; }
+.page-title em { font-style: italic; color: var(--gold); }
+.page-rule { height: 2px; background: linear-gradient(90deg, var(--gold) 0%, rgba(197,179,88,0) 55%); }
+
+.summary { max-width: 980px; margin: 0 auto; padding: 48px 64px 8px; }
+.summary ul { list-style: none; border-left: 2px solid var(--gold); padding: 6px 0 6px 28px; }
+.summary li { font-size: 15px; line-height: 1.75; color: rgba(255,255,255,0.80); font-weight: 400; }
+.summary li + li { margin-top: 12px; }
+
+article { max-width: 980px; margin: 0 auto; padding: 40px 64px 40px; }
+article p { font-size: 17px; line-height: 1.9; color: rgba(255,255,255,0.74); font-weight: 300; max-width: 70ch; }
+article p + p { margin-top: 22px; }
+article h2 { font-family: 'Cormorant Garamond', serif; font-size: 30px; font-weight: 600; color: var(--gold-lt); margin: 48px 0 18px; }
+
+table { width: 100%; max-width: 760px; border-collapse: collapse; margin: 26px 0 14px; }
+th { text-align: left; font-size: 9.5px; letter-spacing: 2.2px; text-transform: uppercase; color: var(--gold); border-bottom: 1px solid rgba(197,179,88,0.22); padding: 12px 12px 12px 0; font-weight: 700; }
+td { padding: 12px 12px 12px 0; border-bottom: 1px solid rgba(255,255,255,0.07); color: rgba(255,255,255,0.78); font-size: 15px; font-weight: 300; }
+th.n, td.n { text-align: right; font-variant-numeric: tabular-nums; }
+td.n { font-family: 'Cormorant Garamond', serif; font-size: 19px; font-weight: 600; color: rgba(255,255,255,0.92); }
+tr.base td { background: rgba(197,179,88,0.07); }
+
+figure { margin: 30px 0 8px; max-width: 860px; }
+figure img { width: 100%; display: block; background: #fff; border-radius: 2px; }
+figcaption, .note { font-size: 13.5px; line-height: 1.75; color: rgba(255,255,255,0.50); font-weight: 300; margin-top: 12px; max-width: 70ch; }
+
+.card { max-width: 980px; margin: 24px auto 0; padding: 0 64px; }
+.card-inner { background: rgba(255,255,255,0.028); border: 1px solid rgba(197,179,88,0.09); border-left: 2px solid var(--gold); padding: 30px 36px; }
+.card h3 { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 600; color: var(--gold-lt); margin-bottom: 12px; }
+.card p { font-size: 15.5px; line-height: 1.85; color: rgba(255,255,255,0.72); font-weight: 300; }
+.btn { display: inline-block; margin-top: 18px; border: 1px solid rgba(197,179,88,0.55); color: var(--gold); text-decoration: none; padding: 11px 24px; font-size: 10px; font-weight: 700; letter-spacing: 2.2px; text-transform: uppercase; }
+.btn:hover { background: rgba(197,179,88,0.08); }
+
+footer { border-top: 1px solid rgba(197,179,88,0.1); padding: 44px 64px 64px; max-width: 980px; margin: 56px auto 0; font-size: 13px; color: rgba(255,255,255,0.45); font-weight: 300; line-height: 1.9; }
+footer a { color: rgba(255,255,255,0.68); text-decoration: none; }
+footer a:hover { color: var(--gold); }
+
+@media (max-width: 860px) {
+  nav { padding: 0 20px; } .nav-links { gap: 16px; }
+  .page-head { padding: 118px 22px 40px; } .summary, article, .card { padding-left: 22px; padding-right: 22px; }
+  article p { font-size: 16px; } td { font-size: 13px; } td.n { font-size: 16px; } th { letter-spacing: 1px; }
+  footer { padding: 36px 22px 52px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html"><img src="APA_Logo_Trasparente_fixed.png" alt="APA Quant"></a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="etf-signals.html">Methodology</a>
+    <a class="nav-cta" href="index.html#access">See Plans</a>
+  </div>
+</nav>
+
+<div class="page-head">
+  <div class="page-badge">Ricerca · Ottobre 2026 <a href="research-transaction-costs.html">Read in English</a></div>
+  <h1 class="page-title">I costi di transazione non sono un <em>dettaglio trascurabile</em> nella rotazione di portafoglio.</h1>
+</div>
+<div class="page-rule"></div>
+
+<div class="summary">
+  <ul>
+    <li>Stessa strategia, stesse operazioni, cinque differenti ipotesi di costi di transazione: tra 0 e 30 bps per lato, il capitale finale scende da 1,30 milioni a 646 mila dollari.</li>
+    <li>In una strategia di rotazione mensile con ETF, passare da 0 a 5 bps per lato costa circa 0,7 punti percentuali l'anno: sulla carta sembra poco, ma nell'arco di 19 anni si traduce in un divario di 143 mila dollari.</li>
+    <li>Il drawdown massimo cambia appena all'aumentare dei costi, ed è proprio per questo che una due diligence focalizzata esclusivamente sul drawdown può non coglierne l'effetto.</li>
+    <li>Tre domande da porsi davanti a qualsiasi backtest di rotazione: se i risultati siano lordi o netti, quale costo per lato sia stato assunto e quanto spesso viene modificato il portafoglio.</li>
+  </ul>
+</div>
+
+<article>
+  <p>Quasi ogni backtest di strategie di rotazione che ci capita di leggere viene presentato al lordo dei costi, oppure con questi ultimi relegati a una nota a piè di pagina. Facile intuirne il motivo: a pochi basis point per operazione, l'aggiustamento sembra marginale e nessuno ama togliere punti a una curva dell'equity seducente. Il nostro approccio è diverso: in una strategia che cambia le proprie posizioni ogni mese, i costi di transazione fanno parte del risultato, non sono un dettaglio con cui fare i conti ex post.</p>
+
+  <p>Per dare una dimensione concreta al problema, abbiamo preso la strategia che utilizziamo &mdash; un portafoglio modello di quattro ETF quotati negli Stati Uniti, rivisto all'incirca una volta al mese, che si sposta interamente in liquidità quando le condizioni diventano avverse &mdash; e abbiamo eseguito lo stesso backtest cinque volte, modificando un solo input: il costo per lato di ogni operazione. Stessi segnali, stesse posizioni, stesse date, dal 28 settembre 2007 al 18 settembre 2026. Due ipotesi si applicano a tutte le simulazioni: la liquidità non investita viene remunerata al tasso statunitense a 3 mesi e i dividendi degli ETF sono esclusi (il che penalizza la strategia, non la favorisce). Questi sono risultati di backtest, non risultati live.</p>
+
+  <h2>Risultati</h2>
+  <table>
+    <tr><th>Costo per lato</th><th class="n">CAGR</th><th class="n">Sharpe</th><th class="n">Max drawdown</th><th class="n">100.000 $ diventano</th></tr>
+    <tr><td>0 bps</td><td class="n">14,5%</td><td class="n">0,89</td><td class="n">&minus;28,5%</td><td class="n">1.303.000 $</td></tr>
+    <tr class="base"><td>5 bps &middot; il nostro caso base</td><td class="n">13,8%</td><td class="n">0,85</td><td class="n">&minus;28,6%</td><td class="n">1.160.000 $</td></tr>
+    <tr><td>10 bps</td><td class="n">13,1%</td><td class="n">0,82</td><td class="n">&minus;28,6%</td><td class="n">1.032.000 $</td></tr>
+    <tr><td>20 bps</td><td class="n">11,7%</td><td class="n">0,74</td><td class="n">&minus;30,7%</td><td class="n">817.000 $</td></tr>
+    <tr><td>30 bps</td><td class="n">10,4%</td><td class="n">0,67</td><td class="n">&minus;32,9%</td><td class="n">646.000 $</td></tr>
+  </table>
+
+  <figure>
+    <img src="SA_grafico_costi.png" alt="Crescita di 100.000 dollari nella stessa strategia di rotazione su ETF con costi di 0, 5, 10, 20 e 30 punti base per lato, 2007-2026, scala logaritmica">
+    <figcaption>Stessa strategia, stesse operazioni, cinque ipotesi di costo. Crescita di 100.000 $, scala logaritmica, 28 settembre 2007 &ndash; 18 settembre 2026. Risultati di backtest, non live.</figcaption>
+  </figure>
+
+  <p>La riga che molti lettori saltano è la seconda. Passare da zero a 5 bps per lato costa circa 0,7 punti percentuali all'anno: sulla carta sembra solo rumore; capitalizzato per 19 anni, però, diventa una differenza di 143 mila dollari su un capitale iniziale di 100 mila, più dell'intero investimento iniziale. A 30 bps il capitale finale è di 646 mila dollari invece di 1,303 milioni: circa la metà, senza aver cambiato nulla se non il prezzo pagato per eseguire esattamente le stesse operazioni.</p>
+
+  <p>La meccanica è semplice, anche se non sempre intuitiva: nell'intero periodo il modello ha attraversato 228 revisioni e 934 operazioni individuali, circa 49 l'anno, con un turnover annuale di circa 11,7 volte il capitale. Nessuna di queste operazioni è particolarmente costosa presa singolarmente: è la ripetizione, combinata con la capitalizzazione, a rendere significativa la differenza. E questo divario si nasconde proprio nel punto in cui la maggior parte degli investitori cerca il rischio: il drawdown massimo cambia appena tra 0 e 10 bps (&minus;28,5% contro &minus;28,6%), mentre il capitale finale scende di circa un quinto. I costi possono pesare molto sulla ricchezza finale anche quando il peggior ribasso cambia poco.</p>
+
+  <h2>&laquo;Ma oggi le commissioni sono zero&raquo;</h2>
+  <p>Un'obiezione ragionevole è che oggi le commissioni sono quasi nulle, quindi tutto questo esercizio sarebbe puramente accademico. Non è così: la commissione è soltanto una parte del costo. Il bid-ask spread e la differenza tra il prezzo assunto dal modello e quello effettivamente ottenuto sul mercato sono ancora lì, e non compaiono in nessun estratto conto. Sugli ETF più liquidi, 5 bps per lato è l'ipotesi che utilizziamo come caso base; sui prodotti meno liquidi, nelle sessioni più sottili o con broker meno competitivi, il costo effettivo può essere sensibilmente più elevato.</p>
+
+  <p>In oltre 21 anni davanti agli schermi ne abbiamo viste di tutti i colori: spread allargati oltre i 100 punti base nelle fasi più turbolente (quello che abbiamo vissuto durante la crisi dei subprime resterà impresso per sempre, e più di recente, durante la pandemia, ci sono state giornate che non esiteremmo a definire &ldquo;psichedeliche&rdquo;) e liquidità bassissima anche in periodi più tranquilli, soprattutto nelle sedute a ridosso dei lunghi ponti festivi. Per questo mostriamo l'intero intervallo da 0 a 30 bps invece di un singolo numero presentato come se valesse per tutti: nessun backtest conosce l'esecuzione di un investitore meglio dell'investitore stesso.</p>
+
+  <h2>Tre domande prima di fidarsi di un backtest</h2>
+  <p>Cosa dovrebbe chiedersi un investitore prima di fidarsi di un backtest di rotazione? Tre cose, a nostro avviso: se i risultati siano lordi o netti, quale costo per lato sia stato ipotizzato e quanto spesso cambia il portafoglio. La terza è quella che quasi nessuno chiede, ed è il moltiplicatore delle altre due: gli stessi 10 bps pesano in modo molto diverso su una strategia che opera due volte l'anno e su una che opera cinquanta volte.</p>
+
+  <p>Nulla di tutto questo è un argomento contro la rotazione sistematica: anche a 30 bps per lato questa strategia produce un rendimento composto del 10,4% annuo con uno Sharpe ratio di 0,67. I costi la peggiorano, ma non la compromettono. In questo caso, però, la differenza tra 14,5% e 10,4% dipende dall'esecuzione; e un numero che dipende dall'esecuzione va misurato, non sottovalutato o, peggio, ignorato.</p>
+
+  <p class="note">I risultati di backtest sono ipotetici e non rappresentano risultati di trading effettivi: nessun ordine è stato inviato e nessuna esecuzione è avvenuta. La performance passata non è indicativa dei risultati futuri. Questo articolo è un'informazione di carattere generale e non costituisce consulenza personalizzata.</p>
+</article>
+
+<div class="card"><div class="card-inner">
+  <h3>La strategia di questo articolo</h3>
+  <p>Il portafoglio analizzato è quello alla base di <strong>APA ETF Signals</strong>, il nostro servizio in abbonamento: quattro ETF quotati negli Stati Uniti, rivisti all'incirca una volta al mese, con ogni revisione inviata agli abbonati su un canale Telegram privato. Metodologia, ipotesi e risultati completi sono pubblici (in inglese).</p>
+  <a class="btn" href="etf-signals.html">Leggi la metodologia</a>
+</div></div>
+
+<footer>
+  <p>APA Quant · Milano · <a href="mailto:apaquant@proton.me">apaquant@proton.me</a> ·
+  <a href="https://t.me/APAQuant">t.me/APAQuant</a> · <a href="legal.html">Terms &amp; privacy</a></p>
+  <p>Pubblicato a ottobre 2026. Dati calcolati con il motore di backtest della strategia, parametri congelati.</p>
+</footer>
+
+</body>
+</html>
