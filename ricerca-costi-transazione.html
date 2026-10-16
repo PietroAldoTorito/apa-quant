@@ -93,8 +93,8 @@ footer a:hover { color: var(--gold); }
 
 <div class="summary">
   <ul>
-    <li>Stessa strategia, stesse operazioni, cinque differenti ipotesi di costi di transazione: tra 0 e 30 bps per lato, il capitale finale scende da 1,30 milioni a 646 mila dollari.</li>
-    <li>In una strategia di rotazione mensile con ETF, passare da 0 a 5 bps per lato costa circa 0,7 punti percentuali l'anno: sulla carta sembra poco, ma nell'arco di 19 anni si traduce in un divario di 143 mila dollari.</li>
+    <li>Stessa strategia, stesse operazioni, cinque differenti ipotesi di costi di transazione: tra 0 e 30 bps per lato, il capitale finale scende da 1,30 milioni a 641 mila dollari.</li>
+    <li>In una strategia di rotazione mensile con ETF, passare da 0 a 5 bps per lato costa circa 0,7 punti percentuali l'anno: sulla carta sembra poco, ma nell'arco di 19 anni si traduce in un divario di 144 mila dollari.</li>
     <li>Il drawdown massimo cambia appena all'aumentare dei costi, ed è proprio per questo che una due diligence focalizzata esclusivamente sul drawdown può non coglierne l'effetto.</li>
     <li>Tre domande da porsi davanti a qualsiasi backtest di rotazione: se i risultati siano lordi o netti, quale costo per lato sia stato assunto e quanto spesso viene modificato il portafoglio.</li>
   </ul>
@@ -108,11 +108,11 @@ footer a:hover { color: var(--gold); }
   <h2>Risultati</h2>
   <table>
     <tr><th>Costo per lato</th><th class="n">CAGR</th><th class="n">Sharpe</th><th class="n">Max drawdown</th><th class="n">100.000 $ diventano</th></tr>
-    <tr><td>0 bps</td><td class="n">14,5%</td><td class="n">0,89</td><td class="n">&minus;28,5%</td><td class="n">1.303.000 $</td></tr>
-    <tr class="base"><td>5 bps &middot; il nostro caso base</td><td class="n">13,8%</td><td class="n">0,85</td><td class="n">&minus;28,6%</td><td class="n">1.160.000 $</td></tr>
-    <tr><td>10 bps</td><td class="n">13,1%</td><td class="n">0,82</td><td class="n">&minus;28,6%</td><td class="n">1.032.000 $</td></tr>
-    <tr><td>20 bps</td><td class="n">11,7%</td><td class="n">0,74</td><td class="n">&minus;30,7%</td><td class="n">817.000 $</td></tr>
-    <tr><td>30 bps</td><td class="n">10,4%</td><td class="n">0,67</td><td class="n">&minus;32,9%</td><td class="n">646.000 $</td></tr>
+    <tr><td>0 bps</td><td class="n">14,5%</td><td class="n">0,88</td><td class="n">&minus;28,5%</td><td class="n">1.302.000 $</td></tr>
+    <tr class="base"><td>5 bps &middot; il nostro caso base</td><td class="n">13,8%</td><td class="n">0,85</td><td class="n">&minus;28,6%</td><td class="n">1.158.000 $</td></tr>
+    <tr><td>10 bps</td><td class="n">13,1%</td><td class="n">0,81</td><td class="n">&minus;28,6%</td><td class="n">1.029.000 $</td></tr>
+    <tr><td>20 bps</td><td class="n">11,7%</td><td class="n">0,74</td><td class="n">&minus;30,7%</td><td class="n">812.000 $</td></tr>
+    <tr><td>30 bps</td><td class="n">10,3%</td><td class="n">0,66</td><td class="n">&minus;32,9%</td><td class="n">641.000 $</td></tr>
   </table>
 
   <figure>
@@ -120,7 +120,7 @@ footer a:hover { color: var(--gold); }
     <figcaption>Stessa strategia, stesse operazioni, cinque ipotesi di costo. Crescita di 100.000 $, scala logaritmica, 28 settembre 2007 &ndash; 18 settembre 2026. Risultati di backtest, non live.</figcaption>
   </figure>
 
-  <p>La riga che molti lettori saltano è la seconda. Passare da zero a 5 bps per lato costa circa 0,7 punti percentuali all'anno: sulla carta sembra solo rumore; capitalizzato per 19 anni, però, diventa una differenza di 143 mila dollari su un capitale iniziale di 100 mila, più dell'intero investimento iniziale. A 30 bps il capitale finale è di 646 mila dollari invece di 1,303 milioni: circa la metà, senza aver cambiato nulla se non il prezzo pagato per eseguire esattamente le stesse operazioni.</p>
+  <p>La riga che molti lettori saltano è la seconda. Passare da zero a 5 bps per lato costa circa 0,7 punti percentuali all'anno: sulla carta sembra solo rumore; capitalizzato per 19 anni, però, diventa una differenza di 144 mila dollari su un capitale iniziale di 100 mila, più dell'intero investimento iniziale. A 30 bps il capitale finale è di 641 mila dollari invece di 1,302 milioni: circa la metà, senza aver cambiato nulla se non il prezzo pagato per eseguire esattamente le stesse operazioni.</p>
 
   <p>La meccanica è semplice, anche se non sempre intuitiva: nell'intero periodo il modello ha attraversato 228 revisioni e 934 operazioni individuali, circa 49 l'anno, con un turnover annuale di circa 11,7 volte il capitale. Nessuna di queste operazioni è particolarmente costosa presa singolarmente: è la ripetizione, combinata con la capitalizzazione, a rendere significativa la differenza. E questo divario si nasconde proprio nel punto in cui la maggior parte degli investitori cerca il rischio: il drawdown massimo cambia appena tra 0 e 10 bps (&minus;28,5% contro &minus;28,6%), mentre il capitale finale scende di circa un quinto. I costi possono pesare molto sulla ricchezza finale anche quando il peggior ribasso cambia poco.</p>
 
@@ -132,7 +132,7 @@ footer a:hover { color: var(--gold); }
   <h2>Tre domande prima di fidarsi di un backtest</h2>
   <p>Cosa dovrebbe chiedersi un investitore prima di fidarsi di un backtest di rotazione? Tre cose, a nostro avviso: se i risultati siano lordi o netti, quale costo per lato sia stato ipotizzato e quanto spesso cambia il portafoglio. La terza è quella che quasi nessuno chiede, ed è il moltiplicatore delle altre due: gli stessi 10 bps pesano in modo molto diverso su una strategia che opera due volte l'anno e su una che opera cinquanta volte.</p>
 
-  <p>Nulla di tutto questo è un argomento contro la rotazione sistematica: anche a 30 bps per lato questa strategia produce un rendimento composto del 10,4% annuo con uno Sharpe ratio di 0,67. I costi la peggiorano, ma non la compromettono. In questo caso, però, la differenza tra 14,5% e 10,4% dipende dall'esecuzione; e un numero che dipende dall'esecuzione va misurato, non sottovalutato o, peggio, ignorato.</p>
+  <p>Nulla di tutto questo è un argomento contro la rotazione sistematica: anche a 30 bps per lato questa strategia produce un rendimento composto del 10,3% annuo con uno Sharpe ratio di 0,66. I costi la peggiorano, ma non la compromettono. In questo caso, però, la differenza tra 14,5% e 10,3% dipende dall'esecuzione; e un numero che dipende dall'esecuzione va misurato, non sottovalutato o, peggio, ignorato.</p>
 
   <p class="note">I risultati di backtest sono ipotetici e non rappresentano risultati di trading effettivi: nessun ordine è stato inviato e nessuna esecuzione è avvenuta. La performance passata non è indicativa dei risultati futuri. Questo articolo è un'informazione di carattere generale e non costituisce consulenza personalizzata.</p>
 </article>

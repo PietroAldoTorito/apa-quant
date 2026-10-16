@@ -93,8 +93,8 @@ footer a:hover { color: var(--gold); }
 
 <div class="summary">
   <ul>
-    <li>Same strategy, same trades, five cost assumptions: between 0 and 30 bps per side, final capital falls from $1.30 million to $646,000.</li>
-    <li>In a monthly ETF rotation, moving from 0 to 5 bps per side costs about 0.7 percentage points a year: little on paper, a $143,000 gap over 19 years.</li>
+    <li>Same strategy, same trades, five cost assumptions: between 0 and 30 bps per side, final capital falls from $1.30 million to $641,000.</li>
+    <li>In a monthly ETF rotation, moving from 0 to 5 bps per side costs about 0.7 percentage points a year: little on paper, a $144,000 gap over 19 years.</li>
     <li>Maximum drawdown barely changes as costs rise, which is exactly why due diligence focused only on drawdown can miss them.</li>
     <li>Three questions to ask of any rotation backtest: gross or net, what cost per side, and how often the portfolio changes.</li>
   </ul>
@@ -108,11 +108,11 @@ footer a:hover { color: var(--gold); }
   <h2>Results</h2>
   <table>
     <tr><th>Cost per side</th><th class="n">CAGR</th><th class="n">Sharpe</th><th class="n">Max drawdown</th><th class="n">$100,000 becomes</th></tr>
-    <tr><td>0 bps</td><td class="n">14.5%</td><td class="n">0.89</td><td class="n">&minus;28.5%</td><td class="n">$1,303,000</td></tr>
-    <tr class="base"><td>5 bps &middot; our base case</td><td class="n">13.8%</td><td class="n">0.85</td><td class="n">&minus;28.6%</td><td class="n">$1,160,000</td></tr>
-    <tr><td>10 bps</td><td class="n">13.1%</td><td class="n">0.82</td><td class="n">&minus;28.6%</td><td class="n">$1,032,000</td></tr>
-    <tr><td>20 bps</td><td class="n">11.7%</td><td class="n">0.74</td><td class="n">&minus;30.7%</td><td class="n">$817,000</td></tr>
-    <tr><td>30 bps</td><td class="n">10.4%</td><td class="n">0.67</td><td class="n">&minus;32.9%</td><td class="n">$646,000</td></tr>
+    <tr><td>0 bps</td><td class="n">14.5%</td><td class="n">0.88</td><td class="n">&minus;28.5%</td><td class="n">$1,302,000</td></tr>
+    <tr class="base"><td>5 bps &middot; our base case</td><td class="n">13.8%</td><td class="n">0.85</td><td class="n">&minus;28.6%</td><td class="n">$1,158,000</td></tr>
+    <tr><td>10 bps</td><td class="n">13.1%</td><td class="n">0.81</td><td class="n">&minus;28.6%</td><td class="n">$1,029,000</td></tr>
+    <tr><td>20 bps</td><td class="n">11.7%</td><td class="n">0.74</td><td class="n">&minus;30.7%</td><td class="n">$812,000</td></tr>
+    <tr><td>30 bps</td><td class="n">10.3%</td><td class="n">0.66</td><td class="n">&minus;32.9%</td><td class="n">$641,000</td></tr>
   </table>
 
   <figure>
@@ -120,7 +120,7 @@ footer a:hover { color: var(--gold); }
     <figcaption>Same strategy, same trades, five cost assumptions. Growth of $100,000, logarithmic scale, 28 September 2007 &ndash; 18 September 2026. Backtested, not live results.</figcaption>
   </figure>
 
-  <p>The row most readers skip is the second one. Going from zero to 5 bps per side costs about 0.7 percentage points a year: on paper, noise. Compounded over 19 years, though, it becomes a $143,000 difference on $100,000 of starting capital &mdash; more than the entire initial investment. At 30 bps, final capital is $646,000 instead of $1.303 million: roughly half, with nothing changed except the price paid to execute exactly the same trades.</p>
+  <p>The row most readers skip is the second one. Going from zero to 5 bps per side costs about 0.7 percentage points a year: on paper, noise. Compounded over 19 years, though, it becomes a $144,000 difference on $100,000 of starting capital &mdash; more than the entire initial investment. At 30 bps, final capital is $641,000 instead of $1.302 million: roughly half, with nothing changed except the price paid to execute exactly the same trades.</p>
 
   <p>The mechanics are simple, if not always intuitive: over the whole period the model went through 228 reviews and 934 individual trades, about 49 a year, for an annual turnover of around 11.7 times capital. None of those trades is expensive on its own: it is repetition, combined with compounding, that makes the difference large. And the gap hides where most investors look for risk. Maximum drawdown barely moves between 0 and 10 bps (&minus;28.5% against &minus;28.6%), while final capital drops by about a fifth: costs can weigh heavily on final wealth even when the worst decline hardly changes.</p>
 
@@ -132,7 +132,7 @@ footer a:hover { color: var(--gold); }
   <h2>Three questions before trusting a backtest</h2>
   <p>So what should an investor ask before trusting a rotation backtest? Three things, in our view: whether results are gross or net, what cost per side was assumed, and how often the portfolio changes. The third is the one almost nobody asks, and it multiplies the other two: the same 10 bps weigh very differently on a strategy that trades twice a year and on one that trades fifty times.</p>
 
-  <p>None of this is an argument against systematic rotation. Even at 30 bps per side, this strategy still compounds at 10.4% a year with a Sharpe ratio of 0.67: costs make it worse, they don't break it. But in this case the difference between 14.5% and 10.4% comes down to execution, and a number that depends on execution should be measured, not underestimated or, worse, ignored.</p>
+  <p>None of this is an argument against systematic rotation. Even at 30 bps per side, this strategy still compounds at 10.3% a year with a Sharpe ratio of 0.66: costs make it worse, they don't break it. But in this case the difference between 14.5% and 10.3% comes down to execution, and a number that depends on execution should be measured, not underestimated or, worse, ignored.</p>
 
   <p class="note">Backtested results are hypothetical and do not represent actual trading results. No orders were placed and no fills occurred. Past performance is not indicative of future results. This article is general information, not personalised investment advice.</p>
 </article>
