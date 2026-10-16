@@ -502,11 +502,11 @@ footer {
       <div class="strat-card">
         <div class="strat-tag">Module 01</div>
         <div class="strat-name">USA Ultimate</div>
-        <div class="strat-universe">US Equities · ETFs · Leveraged</div>
-        <div class="strat-desc">Trend-following model applied to US large-cap equity indices. Uses dual moving average crossover with volatility-adjusted position sizing. Leverage applied dynamically based on realised volatility regime. Active drawdown circuit breaker at strategy level.</div>
+        <div class="strat-universe">US Equities · Single Stocks · Leveraged</div>
+        <div class="strat-desc">Systematic stock selection within the US large-cap universe. Positioning adapts to the prevailing market regime, and leverage is reduced when conditions deteriorate. Every position has a predefined exit.</div>
         <div class="strat-meta">
-          <div class="strat-meta-item"><div class="strat-meta-label">Signal Type</div><div class="strat-meta-val">Trend / MA</div></div>
-          <div class="strat-meta-item"><div class="strat-meta-label">Leverage</div><div class="strat-meta-val">Dynamic</div></div>
+          <div class="strat-meta-item"><div class="strat-meta-label">Signal Type</div><div class="strat-meta-val">Trend / Regime</div></div>
+          <div class="strat-meta-item"><div class="strat-meta-label">Leverage</div><div class="strat-meta-val">Regime-based</div></div>
           <div class="strat-meta-item"><div class="strat-meta-label">Output</div><div class="strat-meta-val">Long / Flat</div></div>
         </div>
       </div>
@@ -514,10 +514,10 @@ footer {
       <div class="strat-card">
         <div class="strat-tag">Module 02</div>
         <div class="strat-name">Europe Fortress</div>
-        <div class="strat-universe">European Equities · Broad Market</div>
-        <div class="strat-desc">Systematic allocation to European equity indices with a volatility-dampening overlay. Designed to reduce correlation to US equity beta. Positioning based on momentum and regime classification; defensive by construction during elevated volatility environments.</div>
+        <div class="strat-universe">European Equities · Single Stocks</div>
+        <div class="strat-desc">Systematic stock selection among European large caps. Exposure and leverage depend on market regime and volatility; the strategy turns defensive, up to full cash, in stressed markets.</div>
         <div class="strat-meta">
-          <div class="strat-meta-item"><div class="strat-meta-label">Signal Type</div><div class="strat-meta-val">Momentum</div></div>
+          <div class="strat-meta-item"><div class="strat-meta-label">Signal Type</div><div class="strat-meta-val">Trend / Regime</div></div>
           <div class="strat-meta-item"><div class="strat-meta-label">Leverage</div><div class="strat-meta-val">3× Max</div></div>
           <div class="strat-meta-item"><div class="strat-meta-label">Output</div><div class="strat-meta-val">Long / Flat</div></div>
         </div>
@@ -526,11 +526,11 @@ footer {
       <div class="strat-card">
         <div class="strat-tag">Module 03</div>
         <div class="strat-name">Global Golden</div>
-        <div class="strat-universe">Gold · Commodities · Safe Havens</div>
-        <div class="strat-desc">Allocates to gold and commodity proxies based on cross-asset stress signals and inflation regime indicators. Acts as a portfolio-level diversifier, generating positive signal during equity stress periods. Low correlation to modules 01 and 02 by design.</div>
+        <div class="strat-universe">Commodities · FX · Indices</div>
+        <div class="strat-desc">Trend-following allocation across commodities, currencies and equity indices, with risk-budgeted position sizing and a strategy-level stop. Acts as a diversifier to modules 01 and 02.</div>
         <div class="strat-meta">
-          <div class="strat-meta-item"><div class="strat-meta-label">Signal Type</div><div class="strat-meta-val">Cross-asset</div></div>
-          <div class="strat-meta-item"><div class="strat-meta-label">Leverage</div><div class="strat-meta-val">1× Max</div></div>
+          <div class="strat-meta-item"><div class="strat-meta-label">Signal Type</div><div class="strat-meta-val">Trend</div></div>
+          <div class="strat-meta-item"><div class="strat-meta-label">Leverage</div><div class="strat-meta-val">Limited</div></div>
           <div class="strat-meta-item"><div class="strat-meta-label">Output</div><div class="strat-meta-val">Long / Flat</div></div>
         </div>
       </div>
@@ -539,7 +539,7 @@ footer {
         <div class="strat-tag">Module 04</div>
         <div class="strat-name">Currency Shield</div>
         <div class="strat-universe">FX · G10 Currencies · Overlay</div>
-        <div class="strat-desc">FX overlay strategy operating on G10 currency pairs. Activates hedging exposure based on realised volatility conditions and cross-asset divergence signals. Functions independently from equity modules; provides meaningful diversification during currency dislocations.</div>
+        <div class="strat-desc">FX strategy on G10 currency pairs combining independent engines, with a defensive overlay that activates only in high-volatility environments. Near-zero correlation to the equity modules.</div>
         <div class="strat-meta">
           <div class="strat-meta-item"><div class="strat-meta-label">Signal Type</div><div class="strat-meta-val">FX Volatility</div></div>
           <div class="strat-meta-item"><div class="strat-meta-label">Leverage</div><div class="strat-meta-val">Variable</div></div>
@@ -569,11 +569,11 @@ footer {
         </li>
         <li>
           <span class="signal-num">02</span>
-          <div><strong style="color:rgba(255,255,255,0.85);font-size:12.5px;display:block;margin-bottom:6px">Volatility Targeting</strong>Position size is scaled inversely to realised volatility. Target annualised portfolio volatility is defined at the framework level. Exposure is reduced automatically as volatility rises — no manual intervention required.</div>
+          <div><strong style="color:rgba(255,255,255,0.85);font-size:12.5px;display:block;margin-bottom:6px">Volatility-Aware Sizing</strong>Exposure and leverage adapt automatically to market volatility and regime. No manual intervention required.</div>
         </li>
         <li>
           <span class="signal-num">03</span>
-          <div><strong style="color:rgba(255,255,255,0.85);font-size:12.5px;display:block;margin-bottom:6px">Drawdown Controls</strong>Circuit breakers operate at both strategy and portfolio level. Breaches of predefined drawdown thresholds trigger automatic de-risking. Full re-engagement requires a predefined recovery condition to be met.</div>
+          <div><strong style="color:rgba(255,255,255,0.85);font-size:12.5px;display:block;margin-bottom:6px">Drawdown Controls</strong>Every position has a predefined stop and exit rule, and risk is scaled down automatically in adverse conditions.</div>
         </li>
         <li>
           <span class="signal-num">04</span>
@@ -600,7 +600,7 @@ footer {
         <li><span class="ops-dot"></span>FX overlay activation status</li>
         <li><span class="ops-dot"></span>Volatility-adjusted sizing for each signal</li>
         <li><span class="ops-dot"></span>Regime classification (risk-on / risk-off / transition)</li>
-        <li><span class="ops-dot"></span>Portfolio-level drawdown status and circuit breaker state</li>
+        <li><span class="ops-dot"></span>Stop levels and regime state per module</li>
       </ul>
     </div>
 
@@ -670,7 +670,7 @@ footer {
       </div>
     </div>
     <div class="perf-disclaimer reveal">
-      Model-based backtested results (2000–2025). Aggregate portfolio across four strategy modules with €100,000 reference capital each. Results reflect end-of-day signal execution at closing prices. Slippage and transaction costs are not modelled. Past performance does not guarantee future results. Full methodology and strategy-level data available upon request.
+      Model-based backtested results (2000–2025). Aggregate portfolio across four strategy modules with €100,000 reference capital each. Results reflect end-of-day signal execution at closing prices. Commissions are modelled; slippage is not. Past performance does not guarantee future results. Full methodology and strategy-level data available upon request.
     </div>
   </div>
 </div>
