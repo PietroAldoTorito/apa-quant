@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Il filtro che sbaglia nove volte su undici (e perché lo teniamo) — APA Quant Ricerca</title>
+<meta name="description" content="Dal 2007 il filtro di regime della nostra rotazione su ETF è passato in liquidità 11 volte e ha sbagliato 9 volte. Perché vale comunque la pena: 2008, 2020 e 2022, misurati.">
+<link rel="alternate" hreflang="en" href="research-regime-filter.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --navy: #002B5B; --navy-deep: #001428; --gold: #C5B358; --gold-lt: #d9c97a;
+  --gold-dim: rgba(197,179,88,0.18); --white: #ffffff;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Montserrat', sans-serif; font-size: 16px; background: var(--navy-deep); color: var(--white); overflow-x: hidden; }
+
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between;
+  padding: 0 60px; height: 72px; background: rgba(0,12,28,0.94); backdrop-filter: blur(14px); border-bottom: 1px solid var(--gold-dim); }
+.nav-logo img { height: 44px; display: block; }
+.nav-links { display: flex; gap: 36px; align-items: center; }
+.nav-links a { color: rgba(255,255,255,0.73); text-decoration: none; font-size: 10px; font-weight: 600; letter-spacing: 2.2px; text-transform: uppercase; transition: color .25s; }
+.nav-links a:hover { color: var(--gold); }
+.nav-cta { border: 1px solid rgba(197,179,88,0.45) !important; color: var(--gold) !important; padding: 8px 20px; font-size: 9.5px !important; letter-spacing: 2px !important; }
+
+.page-head { padding: 150px 64px 56px; max-width: 980px; margin: 0 auto; }
+.page-badge { font-size: 9.5px; letter-spacing: 3.5px; text-transform: uppercase; color: rgba(197,179,88,0.7); font-weight: 600; margin-bottom: 24px; }
+.page-badge a { color: rgba(255,255,255,0.55); text-decoration: none; margin-left: 14px; letter-spacing: 2px; }
+.page-badge a:hover { color: var(--gold); }
+.page-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(36px, 5vw, 58px); line-height: 1.1; font-weight: 600; }
+.page-title em { font-style: italic; color: var(--gold); }
+.page-rule { height: 2px; background: linear-gradient(90deg, var(--gold) 0%, rgba(197,179,88,0) 55%); }
+
+.summary { max-width: 980px; margin: 0 auto; padding: 48px 64px 8px; }
+.summary ul { list-style: none; border-left: 2px solid var(--gold); padding: 6px 0 6px 28px; }
+.summary li { font-size: 15px; line-height: 1.75; color: rgba(255,255,255,0.80); font-weight: 400; }
+.summary li + li { margin-top: 12px; }
+
+article { max-width: 980px; margin: 0 auto; padding: 40px 64px 40px; }
+article p { font-size: 17px; line-height: 1.9; color: rgba(255,255,255,0.74); font-weight: 300; max-width: 70ch; }
+article p + p { margin-top: 22px; }
+article h2 { font-family: 'Cormorant Garamond', serif; font-size: 30px; font-weight: 600; color: var(--gold-lt); margin: 48px 0 18px; }
+
+table { width: 100%; max-width: 760px; border-collapse: collapse; margin: 26px 0 14px; }
+th { text-align: left; font-size: 9.5px; letter-spacing: 2.2px; text-transform: uppercase; color: var(--gold); border-bottom: 1px solid rgba(197,179,88,0.22); padding: 12px 12px 12px 0; font-weight: 700; }
+td { padding: 12px 12px 12px 0; border-bottom: 1px solid rgba(255,255,255,0.07); color: rgba(255,255,255,0.78); font-size: 15px; font-weight: 300; }
+th.n, td.n { text-align: right; font-variant-numeric: tabular-nums; }
+td.n { font-family: 'Cormorant Garamond', serif; font-size: 19px; font-weight: 600; color: rgba(255,255,255,0.92); }
+tr.base td { background: rgba(197,179,88,0.07); }
+
+figure { margin: 30px 0 8px; max-width: 860px; }
+figure img { width: 100%; display: block; background: #fff; border-radius: 2px; }
+figcaption, .note { font-size: 13.5px; line-height: 1.75; color: rgba(255,255,255,0.50); font-weight: 300; margin-top: 12px; max-width: 70ch; }
+
+.card { max-width: 980px; margin: 24px auto 0; padding: 0 64px; }
+.card-inner { background: rgba(255,255,255,0.028); border: 1px solid rgba(197,179,88,0.09); border-left: 2px solid var(--gold); padding: 30px 36px; }
+.card h3 { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 600; color: var(--gold-lt); margin-bottom: 12px; }
+.card p { font-size: 15.5px; line-height: 1.85; color: rgba(255,255,255,0.72); font-weight: 300; }
+.btn { display: inline-block; margin-top: 18px; border: 1px solid rgba(197,179,88,0.55); color: var(--gold); text-decoration: none; padding: 11px 24px; font-size: 10px; font-weight: 700; letter-spacing: 2.2px; text-transform: uppercase; }
+.btn:hover { background: rgba(197,179,88,0.08); }
+
+footer { border-top: 1px solid rgba(197,179,88,0.1); padding: 44px 64px 64px; max-width: 980px; margin: 56px auto 0; font-size: 13px; color: rgba(255,255,255,0.45); font-weight: 300; line-height: 1.9; }
+footer a { color: rgba(255,255,255,0.68); text-decoration: none; }
+footer a:hover { color: var(--gold); }
+
+@media (max-width: 860px) {
+  nav { padding: 0 20px; } .nav-links { gap: 16px; }
+  .page-head { padding: 118px 22px 40px; } .summary, article, .card { padding-left: 22px; padding-right: 22px; }
+  article p { font-size: 16px; } td { font-size: 13px; } td.n { font-size: 16px; } th { letter-spacing: 1px; }
+  footer { padding: 36px 22px 52px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html"><img src="APA_Logo_Trasparente_fixed.png" alt="APA Quant"></a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="etf-signals.html">Methodology</a>
+    <a class="nav-cta" href="index.html#access">See Plans</a>
+  </div>
+</nav>
+
+<div class="page-head">
+  <div class="page-badge">Ricerca · Novembre 2026 <a href="research-regime-filter.html">Read in English</a></div>
+  <h1 class="page-title">Il filtro che sbaglia <em>nove volte su undici</em> (e perché lo teniamo).</h1>
+</div>
+<div class="page-rule"></div>
+
+<div class="summary">
+  <ul>
+    <li>Dal 2007 il filtro di regime della nostra rotazione su ETF ha portato il portafoglio in liquidità 11 volte: in 9 casi, al rientro, il mercato era più in alto di quando eravamo usciti.</li>
+    <li>Le altre due volte erano il 2008 e il 2022, e da sole pagano tutti i falsi allarmi: nel 2008 la strategia chiude a +3,0% con l'S&amp;P 500 a &minus;38,4%.</li>
+    <li>Il filtro protegge dai mercati orso che durano mesi, non dai crolli rapidi: nel 2020 il crollo si è compiuto fra due revisioni e il filtro è arrivato a minimo già passato.</li>
+    <li>Chi giudica un filtro di regime contando quante volte ha ragione lo butta via; va giudicato su quanto fa risparmiare quando ha ragione.</li>
+  </ul>
+</div>
+
+<article>
+  <p>Ogni tanto qualcuno ci chiede quanto spesso il nostro filtro di regime &lsquo;ci prenda&rsquo;. La risposta onesta è, di primo acchito, imbarazzante: quasi mai, dato che dal 2007 a oggi ha portato il portafoglio interamente in liquidità undici volte, e in nove casi, al momento del rientro, l'S&amp;P 500 era più in alto di quando eravamo usciti. Nove falsi allarmi su undici: impietoso, verrebbe da dire. Eppure, se dovessimo togliere un pezzo alla strategia, quello sarebbe l'ultimo. Il motivo sta nelle altre due volte. La prima è la GFC: il filtro esce a fine novembre 2007, sette settimane dopo il massimo dell'indice, e resta fuori fino a fine giugno 2009. Nel 2008 la strategia chiude a +3,0% contro il &minus;38,4% dell'S&amp;P 500, e dal settembre 2007 al minimo di marzo 2009 fa +4,4% contro &minus;55,4%. La seconda è il 2022, un mercato orso che si consuma in dieci mesi: da gennaio a metà ottobre +22,1% contro &minus;24,9%. Due episodi che da soli valgono più di tutto quello che i nove falsi allarmi sono costati, perché sono costati, e non poco. Quando il filtro esce e il mercato riparte, la strategia resta ferma: nell'autunno 2015 fuori per due mesi mentre l'indice guadagnava l'8,4%; nella primavera 2025 fuori da marzo a giugno, con l'indice che prima perde il 10,7% e poi, al nostro rientro, è più in alto dell'8,5% rispetto all'uscita. E il conto più salato arriva proprio dove uno si aspetterebbe protezione.</p>
+
+  <h2>Il 2020, ovvero il caso che nessuno racconta</h2>
+  <p>Il crollo Covid va dal 19 febbraio al 23 marzo 2020: 23 sedute, &minus;34% per l'S&amp;P 500. La revisione di inizio febbraio trova un mercato sano, quella di inizio marzo anche (il ribasso è iniziato da due settimane, e un filtro costruito per riconoscere un deterioramento persistente non scatta su due settimane). La strategia attraversa il crollo interamente investita: &minus;28,6%. Poi, alla revisione del 3 aprile, con il minimo ormai alle spalle, il filtro segnala finalmente un regime avverso e porta tutto in liquidità. Fra il 3 aprile e il 4 giugno l'indice recupera il 25,5%, la strategia lo 0,1%. Il crollo preso tutto, la ripresa persa.</p>
+  <p>Il 2020 si chiude comunque a +23,4% (indice +16,2%), ma non grazie al filtro: grazie a quello che il portafoglio ha fatto dopo giugno.</p>
+
+  <table>
+    <tr><th>Episodio</th><th>Durata del ribasso</th><th class="n">Strategia</th><th class="n">S&amp;P 500<br>solo prezzo</th><th>Il filtro&hellip;</th></tr>
+    <tr><td>2007&ndash;2009</td><td>17 mesi</td><td class="n up">+4,4%</td><td class="n down">&minus;55,4%</td><td>esce dopo 7 settimane, resta fuori 19 mesi</td></tr>
+    <tr><td>Crollo Covid 2020</td><td>23 sedute</td><td class="n down">&minus;28,6%</td><td class="n down">&minus;34,1%</td><td>esce a minimo passato, perde il +25,5%</td></tr>
+    <tr><td>Mercato orso 2022</td><td>10 mesi</td><td class="n up">+22,1%</td><td class="n down">&minus;24,9%</td><td>protegge, con un'uscita sbagliata in primavera</td></tr>
+  </table>
+
+  <figure>
+    <img src="ARTICOLO2_grafico.png" alt="La strategia contro l'S&amp;P 500 nel 2007-2009 e nel 2020, con i periodi in liquidità evidenziati">
+    <figcaption>Stesso filtro, due crolli. In evidenza i periodi in liquidità. Risultati di backtest, non live; 5 bps per lato; ETF S&amp;P 500 solo prezzo.</figcaption>
+  </figure>
+
+  <h2>Cosa ci dice</h2>
+  <p>La differenza fra il 2008 e il 2020 non sta nel filtro, che è lo stesso, ma nella velocità del ribasso. Un filtro letto a ogni revisione, all'incirca una volta al mese, ha il tempo di vedere un mercato orso che si sviluppa in mesi, e arriva tardi su un crollo che si compie in cinque settimane. Controllarlo più spesso non è la soluzione gratuita che sembra: più controlli vogliono dire più uscite e più falsi allarmi, e già così sono parecchi.</p>
+  <p>I mercati finanziari rimangono controintuitivi, soprattutto quando si parla di protezione: un filtro di regime non si giudica dalla percentuale di volte in cui ha ragione. Funziona esattamente come un'assicurazione: si paga un premio piccolo e frequente (i falsi allarmi, le riprese perse) per evitare un danno raro e grande (il &minus;55% del 2008). Chi lo valuta contando i successi lo spegne dopo il terzo falso allarme, cioè esattamente prima che serva.</p>
+  <p>6 anni fa ho visto in prima persona investitori seguire la propria pancia e liquidare il proprio portafoglio poco prima dei minimi, perdendosi poi gran parte del recupero successivo, per entrare in seguito, quando metà del rally era ormai alle spalle: il mercato rimane estremamente difficile da anticipare, specie quando la volatilità decide di esplodere. L'analisi statistica e il rigore metodologico rimangono, alla lunga, le migliori alleate per sopravvivere alla trincea dei floor.</p>
+  <p class="note">Costi di 5 punti base per lato, liquidità remunerata al tasso USA a 3 mesi, S&amp;P 500 misurato sul solo prezzo. Le performance passate non sono indicative di quelle future.</p>
+</article>
+
+<div class="card"><div class="card-inner">
+  <h3>La strategia di questo articolo</h3>
+  <p>Il portafoglio analizzato è quello alla base di <strong>APA ETF Signals</strong>, il nostro servizio in abbonamento: quattro ETF quotati negli Stati Uniti, rivisti all'incirca una volta al mese, con ogni revisione inviata agli abbonati su un canale Telegram privato. Metodologia, ipotesi e risultati completi sono pubblici (in inglese).</p>
+  <a class="btn" href="etf-signals.html">Leggi la metodologia</a>
+  <p style="margin-top:22px">Sempre in Ricerca: <a href="ricerca-costi-transazione.html" style="color:var(--gold-lt)">I costi di transazione non sono un dettaglio trascurabile nella rotazione di portafoglio</a></p>
+</div></div>
+
+<footer>
+  <p>APA Quant · Milano · <a href="mailto:apaquant@proton.me">apaquant@proton.me</a> ·
+  <a href="https://t.me/APAQuant">t.me/APAQuant</a> · <a href="legal.html">Terms &amp; privacy</a></p>
+  <p>Pubblicato a novembre 2026. Dati calcolati con il motore di backtest della strategia, parametri congelati.</p>
+</footer>
+
+</body>
+</html>
