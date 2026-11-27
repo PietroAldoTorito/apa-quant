@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="it"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Panoramica istituzionale — APA Quant</title>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="APA Quant">
+<meta property="og:title" content="Panoramica istituzionale — APA Quant">
+<meta property="og:description" content="Metodologia e architettura operativa del modello sistematico APA Quant.">
+<meta property="og:url" content="https://apa-quant.com/overview.html">
+<meta property="og:image" content="https://apa-quant.com/apa-og.jpg">
+<meta property="og:image:width" content="1344">
+<meta property="og:image:height" content="756">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://apa-quant.com/apa-og.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&amp;family=Montserrat:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --navy:      #002B5B;
+  --navy-deep: #001428;
+  --navy-mid:  #01366e;
+  --gold:      #C5B358;
+  --gold-lt:   #d9c97a;
+  --gold-dim:  rgba(197,179,88,0.18);
+  --white:     #ffffff;
+  --off-white: #f4f3ef;
+  --text:      #1a1a2e;
+  --text-mid:  #444460;
+}
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  background: var(--navy-deep);
+  color: var(--white);
+  overflow-x: hidden;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 60px; height: 72px;
+  background: rgba(0,12,28,0.94);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--gold-dim);
+}
+.nav-logo { display: flex; align-items: center; }
+.nav-logo img { height: 44px; display: block; }
+.nav-links { display: flex; gap: 36px; align-items: center; }
+.nav-links a {
+  color: rgba(255,255,255,0.68); text-decoration: none;
+  font-size: 10px; font-weight: 600; letter-spacing: 2.2px; text-transform: uppercase;
+  transition: color .25s;
+}
+.nav-links a:hover, .nav-links a.active { color: var(--gold); }
+.nav-cta {
+  border: 1px solid rgba(197,179,88,0.40) !important;
+  color: var(--gold) !important; padding: 8px 20px;
+  font-size: 9.5px !important; letter-spacing: 2px !important;
+  transition: background .2s !important;
+}
+.nav-cta:hover { background: rgba(197,179,88,0.08) !important; }
+
+/* ── HERO ── */
+.hero {
+  position: relative; height: 100vh; min-height: 680px;
+  display: flex; align-items: flex-end; overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background-image: url('apa-office.jpg');
+  background-size: cover; background-position: center;
+}
+.hero-overlay {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(to right,
+      rgba(0,12,28,0.95) 0%,
+      rgba(0,12,28,0.85) 30%,
+      rgba(0,12,28,0.35) 60%,
+      rgba(0,12,28,0.10) 100%
+    ),
+    linear-gradient(to top,
+      rgba(0,12,28,0.55) 0%,
+      rgba(0,12,28,0.00) 40%
+    );
+}
+.hero-logo {
+  position: absolute; bottom: 52px; right: 60px; z-index: 3;
+  opacity: 0; animation: fadeUp .7s .25s forwards;
+
+}
+.hero-logo img { width: 480px; height: auto; }
+.hero-content {
+  position: relative; z-index: 2;
+  padding: 0 72px 100px; max-width: 680px;
+}
+.hero-badge {
+  font-size: 9.5px; letter-spacing: 3.5px; text-transform: uppercase;
+  color: rgba(197,179,88,0.65); font-weight: 600; margin-bottom: 22px;
+  opacity: 0; animation: fadeUp .6s .2s forwards;
+}
+.hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(40px, 5.2vw, 68px); line-height: 1.08;
+  font-weight: 600; color: var(--white);
+  opacity: 0; animation: fadeUp .7s .35s forwards;
+}
+.hero-title em { font-style: italic; color: var(--gold); }
+.hero-sub {
+  margin-top: 20px; font-size: 16px; font-weight: 300;
+  color: rgba(255,255,255,0.66); line-height: 1.78; max-width: 420px;
+  opacity: 0; animation: fadeUp .7s .5s forwards;
+}
+.hero-cta-row {
+  margin-top: 36px; display: flex; gap: 14px; flex-wrap: wrap; align-items: center;
+  opacity: 0; animation: fadeUp .7s .65s forwards;
+}
+.btn-ghost {
+  display: inline-block; border: 1px solid rgba(197,179,88,0.32);
+  color: rgba(255,255,255,0.81); padding: 12px 24px;
+  font-size: 10px; font-weight: 500; letter-spacing: 2px;
+  text-transform: uppercase; text-decoration: none; transition: .2s;
+}
+.btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+.btn-gold {
+  display: inline-block; background: var(--gold); color: var(--navy);
+  padding: 12px 26px; font-size: 10px; font-weight: 700;
+  letter-spacing: 2px; text-transform: uppercase; text-decoration: none;
+  transition: background .2s;
+}
+.btn-gold:hover { background: var(--gold-lt); }
+.hero-qualifier {
+  margin-top: 14px; font-size: 9.5px; letter-spacing: 1.5px;
+  color: rgba(255,255,255,0.66); text-transform: uppercase;
+  opacity: 0; animation: fadeUp .6s .8s forwards;
+}
+.hero-rule {
+  position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, var(--gold) 0%, rgba(197,179,88,0) 55%);
+}
+
+/* ── SHARED ── */
+.wrap { max-width: 1180px; margin: 0 auto; padding: 88px 64px; }
+.section-divider { height: 1px; background: rgba(197,179,88,0.10); max-width: 1180px; margin: 0 auto; }
+.section-label {
+  font-size: 9.5px; font-weight: 700; letter-spacing: 3.5px; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 48px;
+  display: flex; align-items: center; gap: 16px;
+}
+.section-label::after { content:''; flex:1; height:1px; background: rgba(197,179,88,0.16); }
+
+/* ── METHODOLOGY INTRO ── */
+.method-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; }
+.method-lead {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 30px; font-weight: 300; line-height: 1.48; color: var(--white);
+}
+.method-lead em { color: var(--gold); font-style: italic; }
+.method-body { font-size: 16px; line-height: 2.02; color: rgba(255,255,255,0.70); font-weight: 300; }
+.method-body p + p { margin-top: 18px; }
+
+/* ── STRATEGY ARCHITECTURE ── */
+.strat-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 2px; }
+.strat-card {
+  background: rgba(255,255,255,0.31); border: 1px solid rgba(197,179,88,0.09);
+  padding: 40px 36px; position: relative; overflow: hidden;
+  transition: background .3s, border-color .3s;
+}
+.strat-card::before {
+  content: ''; position: absolute; top: 0; left: 0;
+  width: 100%; height: 2px; background: var(--gold);
+  transform: scaleX(0); transform-origin: left; transition: transform .4s ease;
+}
+.strat-card:hover { background: rgba(197,179,88,0.04); border-color: rgba(197,179,88,0.20); }
+.strat-card:hover::before { transform: scaleX(1); }
+.strat-tag { font-size: 9px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: rgba(197,179,88,0.5); margin-bottom: 10px; }
+.strat-name { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 600; color: var(--white); margin-bottom: 8px; line-height: 1.2; }
+.strat-universe { font-size: 10px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(197,179,88,0.65); margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid rgba(255,255,255,0.65); }
+.strat-desc { font-size: 16px; line-height: 2.00; color: rgba(255,255,255,0.70); font-weight: 300; }
+.strat-meta { margin-top: 16px; display: flex; gap: 20px; }
+.strat-meta-item { }
+.strat-meta-label { font-size: 8.5px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.71); }
+.strat-meta-val { font-size: 16px; font-weight: 500; color: rgba(197,179,88,0.75); margin-top: 3px; }
+
+/* ── SIGNAL CONSTRUCTION ── */
+.signal-bg {
+  background: linear-gradient(180deg, rgba(0,30,62,0.45) 0%, rgba(0,18,40,0.60) 100%);
+  border-top: 1px solid rgba(197,179,88,0.10);
+  border-bottom: 1px solid rgba(197,179,88,0.10);
+}
+.signal-grid { display: grid; grid-template-columns: 360px 1fr; gap: 88px; align-items: start; }
+.signal-hed { font-family: 'Cormorant Garamond', serif; font-size: 46px; font-weight: 300; line-height: 1.12; color: var(--white); }
+.signal-hed span { color: var(--gold); }
+.signal-sub { margin-top: 16px; font-size: 16px; color: rgba(255,255,255,0.76); font-weight: 300; line-height: 1.8; }
+.signal-list { list-style: none; }
+.signal-list li {
+  display: flex; align-items: flex-start; gap: 20px; padding: 18px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.82);
+  font-size: 16px; font-weight: 300; line-height: 1.55;
+  color: rgba(255,255,255,0.80);
+}
+.signal-list li:last-child { border-bottom: none; }
+.signal-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px; font-weight: 600; color: rgba(197,179,88,0.35);
+  flex-shrink: 0; width: 28px; line-height: 1.3;
+}
+
+/* ── OPERATIONAL DELIVERY ── */
+.ops-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; }
+.ops-text { font-size: 16px; line-height: 1.98; color: rgba(255,255,255,0.70); font-weight: 300; }
+.ops-text p + p { margin-top: 16px; }
+.ops-items { list-style: none; }
+.ops-items li {
+  display: flex; align-items: flex-start; gap: 16px; padding: 12px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.82);
+  font-size: 16px; color: rgba(255,255,255,0.78); font-weight: 300; line-height: 1.55;
+}
+.ops-items li:last-child { border-bottom: none; }
+.ops-dot {
+  width: 20px; height: 20px; flex-shrink: 0;
+  border: 1px solid rgba(197,179,88,0.30); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px;
+}
+.ops-dot::after { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--gold); }
+
+/* ── ACCESS TABLE ── */
+
+/* ── PERFORMANCE (marble) ── */
+.perf-bg { position: relative; overflow: hidden; }
+.perf-marble {
+  position: absolute; inset: 0;
+  background-image: url('marble-bg.jpg');
+  background-size: cover; background-position: center 60%;
+}
+.perf-marble-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(0,12,28,0.52) 0%, rgba(0,12,28,0.62) 100%);
+}
+.perf-wrap { position: relative; z-index: 2; max-width: 1180px; margin: 0 auto; padding: 88px 64px; }
+
+/* ── PERFORMANCE ── */
+.perf-numbers { display: grid; grid-template-columns: repeat(4,1fr); gap: 2px; margin-top: 8px; }
+.perf-card { background: rgba(0,12,28,0.72); border: 1px solid rgba(197,179,88,0.14); padding: 38px 30px; backdrop-filter: blur(4px); transition: background .3s; }
+.perf-card:hover { background: rgba(197,179,88,0.07); }
+.perf-label { font-size: 9px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: rgba(255,255,255,0.38); margin-bottom: 14px; white-space: nowrap; }
+.perf-pct { font-size: 0.40em; font-weight: 700; display: inline-block; vertical-align: 0.35em; margin-left: 1px; line-height: 1; }
+.perf-period { font-size: 52px; font-family: 'Cormorant Garamond', serif; font-weight: 600; line-height: 1; color: var(--white); }
+.perf-period-sep { font-size: 0.5em; opacity: 0.4; margin: 0 3px; }
+.perf-sub { margin-top: 16px; font-size: 13px; color: rgba(255,255,255,0.35); font-weight: 300; }
+.perf-disclaimer { margin-top: 28px; padding: 15px 18px; border-left: 2px solid rgba(197,179,88,0.30); font-size: 13px; line-height: 1.72; color: rgba(255,255,255,0.45); font-style: italic; }
+
+
+
+
+
+
+/* ── CONTACT ── */
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 88px; align-items: start; }
+.contact-hed { font-family: 'Cormorant Garamond', serif; font-size: 50px; font-weight: 300; line-height: 1.06; color: var(--white); }
+.contact-hed em { color: var(--gold); font-style: italic; }
+.contact-note { margin-top: 20px; font-size: 16px; color: rgba(255,255,255,0.74); font-weight: 300; line-height: 1.8; }
+.contact-row { display: flex; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.65); font-size: 16px; }
+.contact-row:last-child { border-bottom: none; }
+.c-key { width: 130px; flex-shrink: 0; font-size: 9px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(197,179,88,0.60); padding-top: 2px; }
+.c-val { color: rgba(255,255,255,0.73); font-weight: 300; }
+.c-val a { color: rgba(255,255,255,0.73); text-decoration: none; transition: color .2s; }
+.c-val a:hover { color: var(--gold); }
+
+/* ── FOOTER ── */
+footer {
+  border-top: 1px solid rgba(197,179,88,0.10);
+  padding: 48px 64px;
+  display: flex; align-items: center; justify-content: space-between;
+  background: var(--navy-deep);
+}
+.footer-logo img { height: 100px; width: auto; opacity: 0.90; display: block; margin: 0 auto; max-width: 100%; }
+.footer-copy { font-size: 10px; color: rgba(255,255,255,0.82); letter-spacing: .5px; }
+.footer-links { display: flex; gap: 32px; }
+.footer-links a { font-size: 9.5px; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.66); text-decoration: none; transition: color .2s; }
+.footer-links a:hover { color: var(--gold); }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp { from { opacity:0; transform: translateY(20px); } to { opacity:1; transform: translateY(0); } }
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity .75s ease, transform .75s ease; }
+.reveal.visible { opacity:1; transform: none; }
+.reveal-d1 { transition-delay: .12s; }
+.reveal-d2 { transition-delay: .22s; }
+
+/* ── RESPONSIVE ── */
+
+
+  .hero-logo img { width: 480px; height: auto; }
+  .hero-content { padding-bottom: 80px; }
+
+
+
+
+
+
+
+/* ══════════════════════════════════════
+   MOBILE — max-width 768px
+   ══════════════════════════════════════ */
+
+/* Desktop: hamburger hidden */
+.nav-hamburger { display: none; }
+
+@media (max-width: 768px) {
+
+  /* Mobile hero crop: portrait-friendly version that keeps skyline+notebook+tablet visible */
+  .hero-bg {
+    background-image: url('hero-milan-mobile.jpg') !important;
+    background-position: center !important;
+  }
+
+  nav { padding: 0 16px; height: 60px; }
+  .nav-logo { display: flex; align-items: center; }
+.nav-logo img { height: 44px; display: block; }
+  .nav-links { display: none; }
+  .nav-links.open {
+    display: flex; flex-direction: column;
+    position: fixed; top: 60px; left: 0; right: 0;
+    background: rgba(0,12,28,0.98);
+    padding: 20px 24px 28px; gap: 20px; z-index: 200;
+    border-bottom: 1px solid rgba(197,179,88,0.2);
+    overflow-y: auto; max-height: calc(100vh - 60px);
+  }
+  .nav-links.open a {
+    font-size: 13px; color: rgba(255,255,255,0.80);
+    letter-spacing: 1.5px;
+  }
+  .nav-links.open .nav-cta {
+    border-color: rgba(197,179,88,0.5) !important;
+    color: var(--gold) !important;
+    padding: 10px 16px;
+  }
+  .nav-hamburger {
+    display: flex !important; flex-direction: column; gap: 5px;
+    cursor: pointer; padding: 10px 4px; margin-left: auto;
+  }
+  .nav-hamburger span {
+    display: block; width: 22px; height: 2px;
+    background: rgba(197,179,88,0.85); border-radius: 1px;
+  }
+
+  /* ── HERO ── */
+  .hero-logo { display: none !important; }
+  .hero-content { padding: 0 20px 80px !important; max-width: 100%; }
+  .hero-title { font-size: clamp(32px, 8.5vw, 52px) !important; line-height: 1.05; }
+  .hero-sub { font-size: 14px; }
+
+  /* ── TICKER ── */
+  .ticker-strip {
+    overflow-x: auto; overflow-y: hidden;
+    padding: 0 16px; gap: 32px;
+    -webkit-overflow-scrolling: touch; scrollbar-width: none;
+  }
+  .ticker-strip::-webkit-scrollbar { display: none; }
+  .ticker-item { flex-shrink: 0; }
+
+  /* ── LAYOUT ── */
+  .wrap { padding: 56px 20px; }
+  .what-grid, .principles-grid, .contact-grid,
+  .method-grid, .signal-grid, .ops-grid,
+  .delivery-grid { grid-template-columns: 1fr !important; gap: 36px; }
+  .what-tagline { grid-column: 1; }
+  .framework-grid, .access-grid,
+  .strat-grid { grid-template-columns: 1fr !important; }
+
+  /* ── PERFORMANCE GRID ── */
+  /* ── PERFORMANCE MOBILE ── */
+  .perf-numbers { grid-template-columns: 1fr 1fr !important; gap: 1px; }
+  .perf-wrap { padding: 36px 12px !important; max-width: 100%; overflow: hidden; }
+  .perf-card { padding: 20px 14px; min-width: 0; overflow: hidden; }
+  .perf-label { font-size: 8px !important; white-space: nowrap; letter-spacing: 1px; }
+  .perf-sub { font-size: 11px; margin-top: 8px; }
+
+
+  .perf-value { font-size: 34px !important; }
+  .perf-period 
+  .footer-logo img { height: 100px; opacity: 0.85; }{ font-size: 34px !important; }
+
+  /* footer mobile */
+  footer { flex-direction: column !important; gap: 16px !important; text-align: center !important; padding: 24px 16px !important; box-sizing: border-box; width: 100%; }
+  .footer-logo { display: flex !important; justify-content: center !important; width: 100%; overflow: hidden; }
+  .footer-logo img { height: 64px !important; width: auto !important; max-width: 80vw !important; opacity: 0.90; display: block; margin: 0 auto; }
+  .footer-links { flex-wrap: wrap !important; justify-content: center !important; gap: 12px !important; }
+  .footer-copy { font-size: 10px; }
+}
+
+
+
+
+
+
+/* ── PERFORMANCE ── */
+.perf-numbers { display: grid; grid-template-columns: repeat(4,1fr); gap: 2px; margin-top: 8px; }
+.perf-card { background: rgba(0,12,28,0.72); border: 1px solid rgba(197,179,88,0.14); padding: 38px 30px; backdrop-filter: blur(4px); transition: background .3s; }
+.perf-card:hover { background: rgba(197,179,88,0.07); }
+.perf-label { font-size: 9px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: rgba(255,255,255,0.38); margin-bottom: 14px; white-space: nowrap; }
+.perf-sub { margin-top: 16px; font-size: 13px; color: rgba(255,255,255,0.35); font-weight: 300; }
+.perf-disclaimer { margin-top: 28px; padding: 15px 18px; border-left: 2px solid rgba(197,179,88,0.30); font-size: 13px; line-height: 1.72; color: rgba(255,255,255,0.45); font-style: italic; }
+
+/* ── PERFORMANCE GLOBAL ── */
+.perf-value {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 52px;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--white);
+}
+.perf-value.green { color: #72c48a; }
+.perf-value.red   { color: #e88080; }
+.perf-pct {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.38em;
+  font-weight: 700;
+  display: inline-block;
+  vertical-align: 0.28em;
+  line-height: 0;
+  margin-left: 1px;
+}
+.perf-period { font-size: 52px; font-family: 'Cormorant Garamond', serif; font-weight: 600; line-height: 1; color: var(--white); }
+.perf-period-sep { font-size: 0.5em; opacity: 0.4; margin: 0 3px; }
+
+.access-table { width: 100%; border-collapse: collapse; }
+.access-table thead tr { background: rgba(0,43,91,0.6); border-bottom: 2px solid rgba(197,179,88,0.35); }
+.access-table thead th { padding: 16px 20px; font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); text-align: left; }
+.access-table tbody tr { border-bottom: 1px solid rgba(255,255,255,0.065); transition: background .2s; }
+.access-table tbody tr:hover { background: rgba(197,179,88,0.04); }
+.access-table td { padding: 18px 20px; font-size: 14px; color: rgba(255,255,255,0.72); font-weight: 300; line-height: 1.5; vertical-align: middle; }
+.access-table td:first-child { font-weight: 600; color: var(--white); font-size: 13px; letter-spacing: .3px; white-space: nowrap; width: 160px; }
+.access-table td:last-child { font-size: 13px; text-align: right; color: rgba(255,255,255,0.45); width: 100px; }
+
+.access-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; width: 100%; display: block; }
+</style>
+<link rel="alternate" hreflang="en" href="overview.html"></head>
+<body>
+
+<nav>
+<div class="nav-logo">
+    <img src="APA_Logo_Trasparente_fixed.png" alt="APA Quant" loading="eager">
+  </div>
+  <div class="nav-links"><a href="overview.html" lang="en" title="English version">EN</a>
+    <a href="index-it.html#what">Il modello</a>
+    <a href="index-it.html#performance">Risultati</a>
+    <a href="index-it.html#access">Accesso</a>
+    <a href="overview-it.html" class="active">Istituzionali</a>
+    <a href="index-it.html#contact">Contatti</a>
+    <a href="index-it.html#access" class="nav-cta">Richiedi l'accesso</a>
+  </div>
+  <div class="nav-hamburger" onclick="toggleNav()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-logo">
+    <img src="APA_Logo_Trasparente_fixed.png" alt="APA Quant" loading="eager">
+  </div>
+  <div class="hero-content">
+    <div class="hero-badge">Panoramica istituzionale · novembre 2026</div>
+    <h1 class="hero-title">
+      Metodologia e<br>
+      <em>architettura</em><br>
+      operativa
+    </h1>
+    <p class="hero-sub">Una panoramica tecnica per gli investitori che svolgono la due diligence sul modello sistematico APA Quant.</p>
+    <div class="hero-qualifier" style="margin-top:40px">Riservato a controparti qualificate e investitori professionali</div>
+  </div>
+  <div class="hero-rule"></div>
+</div>
+
+<!-- METHODOLOGY INTRO -->
+<div id="methodology">
+  <div class="wrap">
+    <div class="section-label">Metodologia</div>
+    <div class="method-grid">
+      <div class="method-lead reveal">
+        Un modello interamente sistematico che opera senza alcun <em>intervento discrezionale</em> in nessuna fase.
+      </div>
+      <div class="method-body reveal reveal-d1">
+        <p>APA Quant genera le decisioni di allocazione esclusivamente da dati di mercato osservabili: prezzi, volatilità realizzata, momentum fra classi di attivo e classificazione del regime. Nessuna previsione macroeconomica. Nessun giudizio qualitativo.</p>
+        <p>L'architettura separa in livelli indipendenti la generazione dei segnali, il dimensionamento delle posizioni e la gestione del rischio. Ogni livello opera secondo regole predefinite, così che le decisioni siano riproducibili e verificabili sull'intero periodo di osservazione.</p>
+        <p>Il modello è stato sviluppato e testato su un periodo di 26 anni (2000–2026), che comprende regimi di mercato molto diversi: la correzione delle dot-com, la crisi finanziaria del 2008, il COVID-19 e il ciclo dei tassi del 2022.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section-divider"></div>
+
+<!-- STRATEGY ARCHITECTURE -->
+<div id="strategies">
+  <div class="wrap">
+    <div class="section-label">Architettura delle strategie</div>
+    <p class="reveal" style="font-size:13px;color:rgba(255,255,255,0.66);font-weight:300;max-width:600px;margin-bottom:44px;line-height:1.85">
+      Quattro moduli strategici indipendenti, ciascuno con una propria logica di segnale, un proprio universo e propri parametri di rischio. La correlazione fra i moduli è strutturalmente bassa per costruzione.
+    </p>
+    <div class="strat-grid reveal">
+
+      <div class="strat-card">
+        <div class="strat-tag">Modulo 01</div>
+        <div class="strat-name">USA Ultimate</div>
+        <div class="strat-universe">Azioni USA · Titoli singoli · Con leva</div>
+        <div class="strat-desc">Selezione sistematica di titoli fra le grandi capitalizzazioni statunitensi. Il posizionamento si adatta al regime di mercato e la leva si riduce quando le condizioni peggiorano. Ogni posizione ha un'uscita predefinita.</div>
+        <div class="strat-meta">
+          <div class="strat-meta-item"><div class="strat-meta-label">Tipo di segnale</div><div class="strat-meta-val">Trend / regime</div></div>
+          <div class="strat-meta-item"><div class="strat-meta-label">Leva</div><div class="strat-meta-val">In base al regime</div></div>
+          <div class="strat-meta-item"><div class="strat-meta-label">Output</div><div class="strat-meta-val">Lungo / liquidità</div></div>
+        </div>
+      </div>
+
+      <div class="strat-card">
+        <div class="strat-tag">Modulo 02</div>
+        <div class="strat-name">Europe Fortress</div>
+        <div class="strat-universe">Azioni europee · Titoli singoli</div>
+        <div class="strat-desc">Selezione sistematica di titoli fra le grandi capitalizzazioni europee. Esposizione e leva dipendono dal regime di mercato e dalla volatilità; nei mercati sotto stress la strategia diventa difensiva, fino alla liquidità totale.</div>
+        <div class="strat-meta">
+          <div class="strat-meta-item"><div class="strat-meta-label">Tipo di segnale</div><div class="strat-meta-val">Trend / regime</div></div>
+          <div class="strat-meta-item"><div class="strat-meta-label">Leva</div><div class="strat-meta-val">Massimo 3×</div></div>
+          <div class="strat-meta-item"><div class="strat-meta-label">Output</div><div class="strat-meta-val">Lungo / liquidità</div></div>
+        </div>
+      </div>
+
+      <div class="strat-card">
+        <div class="strat-tag">Modulo 03</div>
+        <div class="strat-name">Global Golden</div>
+        <div class="strat-universe">Materie prime · Valute · Indici</div>
+        <div class="strat-desc">Allocazione trend-following su materie prime, valute e indici azionari, con posizioni dimensionate in base al budget di rischio e uno stop a livello di strategia. Fa da diversificatore rispetto ai moduli 01 e 02.</div>
+        <div class="strat-meta">
+          <div class="strat-meta-item"><div class="strat-meta-label">Tipo di segnale</div><div class="strat-meta-val">Trend</div></div>
+          <div class="strat-meta-item"><div class="strat-meta-label">Leva</div><div class="strat-meta-val">Limitata</div></div>
+          <div class="strat-meta-item"><div class="strat-meta-label">Output</div><div class="strat-meta-val">Lungo / liquidità</div></div>
+        </div>
+      </div>
+
+      <div class="strat-card">
+        <div class="strat-tag">Modulo 04</div>
+        <div class="strat-name">Currency Shield</div>
+        <div class="strat-universe">Valute · G10 · Overlay</div>
+        <div class="strat-desc">Strategia sui cambi delle valute G10 che combina motori indipendenti, con un overlay difensivo che si attiva solo nelle fasi di alta volatilità. Correlazione quasi nulla con i moduli azionari.</div>
+        <div class="strat-meta">
+          <div class="strat-meta-item"><div class="strat-meta-label">Tipo di segnale</div><div class="strat-meta-val">Volatilità valutaria</div></div>
+          <div class="strat-meta-item"><div class="strat-meta-label">Leva</div><div class="strat-meta-val">Variabile</div></div>
+          <div class="strat-meta-item"><div class="strat-meta-label">Output</div><div class="strat-meta-val">Attivo / liquidità</div></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="section-divider"></div>
+
+<!-- SIGNAL CONSTRUCTION & RISK -->
+<div class="signal-bg">
+  <div class="wrap">
+    <div class="section-label">Architettura di segnale e rischio</div>
+    <div class="signal-grid">
+      <div class="reveal">
+        <div class="signal-hed">Quattro livelli.<br><span>Un solo processo.</span></div>
+        <p class="signal-sub">Generazione dei segnali, dimensionamento, gestione del rischio ed esecuzione sono separati per struttura. Ogni livello è verificabile in modo indipendente.</p>
+      </div>
+      <ul class="signal-list reveal reveal-d1">
+        <li>
+          <span class="signal-num">01</span>
+          <div><strong style="color:rgba(255,255,255,0.85);font-size:12.5px;display:block;margin-bottom:6px">Generazione dei segnali</strong>Ogni modulo produce un segnale binario (lungo / liquidità) basato sui propri indicatori. Nessuna previsione probabilistica. Nessun intervento dell'analista. I segnali sono calcolati a fine giornata sui prezzi di chiusura.</div>
+        </li>
+        <li>
+          <span class="signal-num">02</span>
+          <div><strong style="color:rgba(255,255,255,0.85);font-size:12.5px;display:block;margin-bottom:6px">Dimensionamento in funzione della volatilità</strong>Esposizione e leva si adattano automaticamente alla volatilità e al regime di mercato. Nessun intervento manuale.</div>
+        </li>
+        <li>
+          <span class="signal-num">03</span>
+          <div><strong style="color:rgba(255,255,255,0.85);font-size:12.5px;display:block;margin-bottom:6px">Controllo del drawdown</strong>Ogni posizione ha uno stop e una regola di uscita predefiniti, e il rischio si riduce automaticamente nelle condizioni avverse.</div>
+        </li>
+        <li>
+          <span class="signal-num">04</span>
+          <div><strong style="color:rgba(255,255,255,0.85);font-size:12.5px;display:block;margin-bottom:6px">Compatibilità di esecuzione</strong>Gli output sono strutturati per l'integrazione diretta con infrastrutture di esecuzione via API (ad esempio Interactive Brokers TWS). La latenza fra segnale e consegna è ridotta al minimo grazie a processi automatizzati.</div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- OPERATIONAL DELIVERY -->
+<div id="delivery">
+  <div class="wrap">
+    <div class="section-label">Consegna operativa</div>
+    <div class="ops-grid reveal">
+      <div class="ops-text">
+        <p>Le allocazioni sono generate ogni giorno, dopo la chiusura dei mercati, per tutti e quattro i moduli contemporaneamente, e consegnate su un canale dedicato prima dell'apertura della seduta successiva.</p>
+        <p>Il modello è interamente automatizzato: fra generazione del segnale e consegna non serve alcun intervento manuale. L'infrastruttura è monitorata in continuo.</p>
+        <p>Per le controparti istituzionali è disponibile l'integrazione diretta via API: i dati di posizionamento possono essere letti in modo automatico e usati come overlay di portafoglio o come allocazione a sé stante.</p>
+      </div>
+      <ul class="ops-items">
+        <li><span class="ops-dot"></span>Posizionamento quotidiano per strategia (lungo / liquidità)</li>
+        <li><span class="ops-dot"></span>Livello di leva ed esposizione per modulo</li>
+        <li><span class="ops-dot"></span>Stato di attivazione dell'overlay valutario</li>
+        <li><span class="ops-dot"></span>Dimensionamento corretto per la volatilità per ogni segnale</li>
+        <li><span class="ops-dot"></span>Classificazione del regime (risk-on / risk-off / transizione)</li>
+        <li><span class="ops-dot"></span>Livelli di stop e stato del regime per modulo</li>
+      </ul>
+    </div>
+
+    <div style="margin-top:56px" class="reveal">
+      <div class="section-label" style="margin-bottom:24px">Modalità di accesso</div>
+      <div class="access-table-wrap"><table class="access-table">
+        <thead>
+          <tr>
+            <th>Livello di accesso</th>
+            <th>Contenuto</th>
+            <th>Formato</th>
+            <th>Modalità</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Ricerca</td>
+            <td>Analisi selezionate sul regime di mercato e commenti sulle strategie</td>
+            <td>Canale pubblico</td>
+            <td>Libero</td>
+          </tr>
+          <tr>
+            <td>architettura</td>
+            <td>Segnali di posizionamento quotidiani su tutte e quattro le strategie</td>
+            <td>Canale dedicato</td>
+            <td>Abbonamento</td>
+          </tr>
+          <tr>
+            <td>Istituzionali</td>
+            <td>Flusso completo · integrazione API · dati di overlay di portafoglio</td>
+            <td>API / strutturato</td>
+            <td>Selettivo</td>
+          </tr>
+        </tbody>
+      </table></div>
+      <p style="margin-top:16px;font-size:11px;color:rgba(255,255,255,0.71);font-style:italic">Accesso istituzionale su base selettiva per controparti qualificate. Documentazione sulla metodologia e dati completi del backtest disponibili su richiesta.</p>
+    </div>
+  </div>
+</div>
+
+<!-- PERFORMANCE (marble bg) -->
+<div id="performance" class="perf-bg">
+  <div class="perf-marble"></div>
+  <div class="perf-marble-overlay"></div>
+  <div class="perf-wrap">
+    <div class="section-label">Risultati <span style="font-size:8.5px;opacity:.4;letter-spacing:1px">&nbsp;Indicativi</span></div>
+    <div class="perf-numbers reveal">
+      <div class="perf-card">
+        <div class="perf-label">CAGR</div>
+        <div class="perf-value green">11,17<span class="perf-pct">%</span></div>
+        <div class="perf-sub">Rendimento annualizzato</div>
+      </div>
+      <div class="perf-card">
+        <div class="perf-label">Drawdown massimo</div>
+        <div class="perf-value red">−10,77<span class="perf-pct">%</span></div>
+        <div class="perf-sub">Dal massimo al minimo</div>
+      </div>
+      <div class="perf-card">
+        <div class="perf-label">Indice di Sharpe</div>
+        <div class="perf-value">1,40</div>
+        <div class="perf-sub">Qualità dei rendimenti</div>
+      </div>
+      <div class="perf-card">
+        <div class="perf-label">Periodo</div>
+        <div class="perf-value perf-period">2000<span class="perf-period-sep">–</span>2026</div>
+        <div class="perf-sub">Backtest</div>
+      </div>
+    </div>
+    <div class="perf-disclaimer reveal">
+      Risultati di backtest del modello (2000 – ottobre 2026). Portafoglio aggregato dei quattro moduli, con un capitale di riferimento di 100.000 € ciascuno. I risultati assumono l'esecuzione dei segnali di fine giornata ai prezzi di chiusura. Leva, commissioni, costi di finanziamento e slippage sono inclusi. I risultati passati non garantiscono quelli futuri. Metodologia completa e dati per strategia disponibili su richiesta.
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div id="contact">
+  <div class="wrap">
+    <div class="section-label">Contatti</div>
+    <div class="contact-grid reveal">
+      <div>
+        <div class="contact-hed">Richieste e<br><em>due diligence.</em></div>
+        <p class="contact-note">Documentazione sulla metodologia, dati completi del backtest e attribuzione dei risultati per strategia disponibili su richiesta per controparti qualificate.</p>
+        <div style="margin-top:32px">
+          <a href="mailto:apaquant@proton.me" class="btn-gold">Richiedi la documentazione</a>
+        </div>
+      </div>
+      <div>
+        <div class="contact-row"><div class="c-key">Organizzazione</div><div class="c-val">APA Quant</div></div>
+        <div class="contact-row"><div class="c-key">Sede</div><div class="c-val">Milano, Italia</div></div>
+        <div class="contact-row"><div class="c-key">Email</div><div class="c-val"><a href="mailto:apaquant@proton.me">apaquant@proton.me</a></div></div>
+        <div class="contact-row"><div class="c-key">Ricerca</div><div class="c-val"><a href="https://t.me/APAQuant" target="_blank">t.me/APAQuant</a></div></div>
+        <div class="contact-row"><div class="c-key">Web</div><div class="c-val"><a href="https://apa-quant.com" target="_blank">apa-quant.com</a></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">
+    <img src="APA_Logo_Trasparente_fixed.png" alt="APA Quant" loading="eager">
+  </div>
+  <div class="footer-copy">© 2026 APA Quant · Tutti i diritti riservati</div>
+  <div class="footer-links">
+    <a href="index-it.html">Home</a>
+    <a href="#methodology">Metodologia</a>
+    <a href="#strategies">Strategie</a>
+    <a href="mailto:apaquant@proton.me">Contatti</a>
+  </div>
+</footer>
+
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+
+<script>
+function toggleNav() {
+  var links = document.querySelector('.nav-links');
+  if (links) links.classList.toggle('open');
+}
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.nav-links a').forEach(function(a) {
+    a.addEventListener('click', function() {
+      document.querySelector('.nav-links').classList.remove('open');
+    });
+  });
+});
+</script>
+
+
+
+</body></html>
