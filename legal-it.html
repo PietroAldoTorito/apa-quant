@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="it"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Condizioni, privacy e rimborsi — APA Quant</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&amp;family=Montserrat:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --navy:#002B5B; --navy-deep:#001428; --navy-mid:#01366e;
+  --gold:#C5B358; --gold-lt:#d9c97a; --gold-dim:rgba(197,179,88,0.18);
+  --white:#ffffff; --off-white:#f4f3ef; --text:#1a1a2e; --text-mid:#444460;
+}
+html { scroll-behavior: smooth; }
+body { font-family:'Montserrat',sans-serif; font-size:16px; background:var(--navy-deep);
+       color:var(--white); overflow-x:hidden; }
+
+nav { position:fixed; top:0; left:0; right:0; z-index:100; display:flex;
+      align-items:center; justify-content:space-between; padding:0 60px; height:72px;
+      background:rgba(0,12,28,0.94); backdrop-filter:blur(14px);
+      border-bottom:1px solid var(--gold-dim); }
+.nav-logo img { height:44px; display:block; }
+.nav-links { display:flex; gap:36px; align-items:center; }
+.nav-links a { color:rgba(255,255,255,0.73); text-decoration:none; font-size:10px;
+      font-weight:600; letter-spacing:2.2px; text-transform:uppercase; transition:color .25s; }
+.nav-links a:hover { color:var(--gold); }
+.nav-cta { border:1px solid rgba(197,179,88,0.45)!important; color:var(--gold)!important;
+      padding:8px 20px; font-size:9.5px!important; letter-spacing:2px!important; }
+
+.page-head { padding:150px 64px 54px; max-width:1180px; margin:0 auto; }
+.page-badge { font-size:9.5px; letter-spacing:3.5px; text-transform:uppercase;
+      color:rgba(197,179,88,0.7); font-weight:600; margin-bottom:24px; }
+.page-title { font-family:'Cormorant Garamond',serif; font-size:clamp(38px,5vw,58px);
+      line-height:1.08; font-weight:600; }
+.page-title em { font-style:italic; color:var(--gold); }
+.page-sub { margin-top:22px; font-size:16px; font-weight:300; line-height:1.8;
+      color:rgba(255,255,255,0.70); max-width:64ch; }
+.page-rule { height:2px; background:linear-gradient(90deg,var(--gold) 0%,rgba(197,179,88,0) 55%); }
+
+.toc { max-width:1180px; margin:0 auto; padding:34px 64px 0;
+      display:flex; flex-wrap:wrap; gap:8px 26px; }
+.toc a { font-size:11px; letter-spacing:1.6px; text-transform:uppercase; font-weight:600;
+      color:rgba(255,255,255,0.55); text-decoration:none; }
+.toc a:hover { color:var(--gold); }
+
+.wrap { max-width:1180px; margin:0 auto; padding:56px 64px; }
+.section-label { font-size:9.5px; font-weight:700; letter-spacing:3.5px; text-transform:uppercase;
+      color:var(--gold); margin-bottom:30px; display:flex; align-items:center; gap:16px; }
+.section-label::after { content:''; flex:1; height:1px; background:rgba(197,179,88,0.18); }
+.section-divider { height:1px; background:rgba(197,179,88,0.1); max-width:1180px; margin:0 auto; }
+
+h3 { font-family:'Cormorant Garamond',serif; font-size:23px; font-weight:600;
+      color:var(--white); margin:30px 0 10px; }
+h3:first-of-type { margin-top:0; }
+.body { font-size:15.5px; line-height:1.9; color:rgba(255,255,255,0.72);
+      font-weight:300; max-width:78ch; }
+.body p + p { margin-top:14px; }
+.body strong { color:rgba(255,255,255,0.93); font-weight:600; }
+.body ul { margin:12px 0 12px 22px; }
+.body li { margin-bottom:7px; }
+.body a { color:var(--gold-lt); }
+
+.fill { background:rgba(197,179,88,0.14); border-bottom:1px dashed var(--gold);
+      padding:1px 5px; color:var(--gold-lt); font-weight:500; }
+
+.card { background:rgba(255,255,255,0.028); border:1px solid rgba(197,179,88,0.09);
+      border-left:2px solid var(--gold); padding:26px 32px; margin:24px 0; }
+.card .body { max-width:none; }
+
+table { width:100%; border-collapse:collapse; margin:16px 0; }
+th { text-align:left; font-size:9.5px; letter-spacing:2.2px; text-transform:uppercase;
+      color:var(--gold); border-bottom:1px solid rgba(197,179,88,0.22);
+      padding:11px 16px 11px 0; font-weight:700; }
+td { padding:12px 16px 12px 0; border-bottom:1px solid rgba(255,255,255,0.07);
+      color:rgba(255,255,255,0.74); font-size:14.5px; font-weight:300; vertical-align:top; }
+
+footer { border-top:1px solid rgba(197,179,88,0.1); padding:40px 64px 62px;
+      max-width:1180px; margin:0 auto; font-size:13px; color:rgba(255,255,255,0.45);
+      font-weight:300; line-height:1.9; }
+footer a { color:rgba(255,255,255,0.68); text-decoration:none; }
+footer a:hover { color:var(--gold); }
+
+@media (max-width:860px){
+  nav{padding:0 24px} .nav-links{gap:18px}
+  .page-head{padding:120px 24px 40px} .toc{padding:28px 24px 0} .wrap{padding:44px 24px}
+  .card{padding:22px} footer{padding:34px 24px 50px}
+}
+</style>
+<link rel="alternate" hreflang="en" href="legal.html"></head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index-it.html"><img src="APA_Logo_Trasparente_fixed.png" alt="APA Quant"></a>
+  <div class="nav-links"><a href="legal.html" lang="en" title="English version">EN</a>
+    <a href="index-it.html">Home</a>
+    <a href="etf-signals-it.html">Metodologia ETF</a>
+    <a href="overview-it.html">Istituzionali</a>
+    <a class="nav-cta" href="index-it.html#access">Vedi i piani</a>
+  </div>
+</nav>
+
+<div class="page-head">
+  <div class="page-badge">Condizioni · Privacy · Rimborsi</div>
+  <h1 class="page-title">Le condizioni,<br><em>in linguaggio semplice.</em></h1>
+  <p class="page-sub">Queste condizioni regolano ogni abbonamento venduto su questo sito. Sono scritte per essere lette, non saltate: le parti che limitano ciò che ricevi e quelle che ti tutelano sono espresse con la stessa chiarezza.</p>
+</div>
+<div class="page-rule"></div>
+
+<div class="toc">
+  <a href="#who">1 · Chi siamo</a>
+  <a href="#service">2 · Che cos'è il servizio</a>
+  <a href="#notadvice">3 · Che cosa non è</a>
+  <a href="#subs">4 · Abbonamenti e pagamento</a>
+  <a href="#withdrawal">5 · Diritto di recesso</a>
+  <a href="#cancel">6 · Disdetta e rimborsi</a>
+  <a href="#delivery">7 · Erogazione e disponibilità</a>
+  <a href="#use">8 · Uso consentito</a>
+  <a href="#liability">9 · Responsabilità</a>
+  <a href="#privacy">10 · Privacy</a>
+  <a href="#law">11 · Legge applicabile e controversie</a>
+</div>
+
+<section id="who"><div class="wrap">
+  <div class="section-label">1 · Chi siamo</div>
+  <div class="body">
+    <p>Questo sito e gli abbonamenti venduti tramite esso sono gestiti da Pietro Aldo Arriciati, ditta individuale con sede in Italia.</p>
+    <table>
+      <tbody><tr><th>Nome commerciale</th><td>APA Quant</td></tr>
+      <tr><th>Titolare</th><td>Pietro Aldo Arriciati</td></tr>
+      <tr><th>Sede legale</th><td>Via Puccini 60, 20099 Sesto San Giovanni (MI), Italy</td></tr>
+      <tr><th>Partita IVA</th><td>IT14726910962</td></tr>
+      <tr><th>Email</th><td><a href="mailto:apaquant@proton.me">apaquant@proton.me</a></td></tr>
+    </tbody></table>
+    <p>Non siamo una banca, un'impresa di investimento, un gestore di fondi né un intermediario finanziario vigilato, e in nessun momento deteniamo denaro o beni dei clienti.</p>
+  </div>
+</div></section>
+
+<div class="section-divider"></div>
+
+<section id="service"><div class="wrap">
+  <div class="section-label">2 · Che cos'è il servizio</div>
+  <div class="body">
+    <p>Pubblichiamo il posizionamento di modelli sistematici che utilizziamo per noi stessi. Sono disponibili due abbonamenti:</p>
+    <table>
+      <tbody><tr><th>APA ETF Signals</th><td>Un portafoglio obiettivo di quattro ETF quotati negli Stati Uniti, a pesi uguali, rivisto secondo un calendario fisso di circa una revisione al mese. Inviato tramite un canale Telegram privato.</td></tr>
+      <tr><th>Portfolio Access</th><td>Posizionamento quotidiano su quattro strategie (azioni USA, azioni europee, global macro e valute), con livelli di ingresso e stop. Inviato tramite un canale Telegram privato separato.</td></tr>
+    </tbody></table>
+    <p>Le ipotesi di costo, i risultati storici e i limiti noti di APA ETF Signals sono pubblicati su <a href="etf-signals-it.html">apa-quant.com/etf-signals.html</a>. Le regole di selezione, le loro impostazioni e la composizione dell'universo sono di nostra proprietà e non vengono divulgate.</p>
+    <p>Ogni abbonato riceve <strong>esattamente gli stessi contenuti nello stesso momento</strong>. Non sappiamo cosa detieni, quali siano i tuoi obiettivi né quale rischio puoi sostenere, e i contenuti non vengono adattati a nessun abbonato.</p>
+  </div>
+</div></section>
+
+<div class="section-divider"></div>
+
+<section id="notadvice"><div class="wrap">
+  <div class="section-label">3 · Che cosa non è</div>
+  <div class="card">
+    <div class="body">
+      <p><strong>Non è consulenza in materia di investimenti.</strong> Nulla di quanto pubblicato nei canali, su questo sito o in qualsiasi nostra comunicazione costituisce una raccomandazione personalizzata, una sollecitazione o un'offerta di acquisto o vendita di strumenti finanziari. Non valutiamo l'adeguatezza o l'appropriatezza nei tuoi confronti, perché non possiamo farlo: non disponiamo di nessuna delle informazioni che tale valutazione richiede.</p>
+      <p><strong>Decidi tu.</strong> Ogni decisione di operare o non operare, su quanto investire e tramite quale intermediario spetta soltanto a te ed è presa sotto la tua responsabilità. Se non sei sicuro che un investimento sia adatto a te, rivolgiti a un professionista abilitato alla consulenza.</p>
+      <p><strong>Puoi perdere denaro.</strong> Gli strumenti citati possono scendere oltre che salire. I risultati passati e quelli di backtest non sono indicativi dei risultati futuri, e i risultati di backtest in particolare sono ottenuti a posteriori su un periodo scelto. Non facciamo previsioni e non promettiamo alcun rendimento.</p>
+    </div>
+  </div>
+</div></section>
+
+<div class="section-divider"></div>
+
+<section id="subs"><div class="wrap">
+  <div class="section-label">4 · Abbonamenti e pagamento</div>
+  <div class="body">
+    <p>Gli abbonamenti si rinnovano automaticamente alla fine di ogni periodo pagato, fino alla disdetta. I prezzi sono indicati nella sezione <a href="index-it.html#access">Accesso</a> di questo sito e sono quelli in vigore al momento della sottoscrizione.</p>
+    <p>Il pagamento è gestito da <strong>Stripe Payments Europe, Ltd.</strong> Non vediamo né conserviamo mai i dati della tua carta. Se un pagamento di rinnovo non va a buon fine, l'accesso prosegue per un breve periodo di tolleranza e poi viene revocato.</p>
+    <p>Se nel tuo paese di residenza si applica l'IVA, viene calcolata e mostrata al momento del pagamento. Per ogni pagamento riceverai una ricevuta da Stripe.</p>
+    <p>Possiamo modificare i prezzi per i periodi futuri. Gli abbonati esistenti mantengono il prezzo sottoscritto fino alla disdetta, e ogni modifica viene comunicata prima di entrare in vigore.</p>
+  </div>
+</div></section>
+
+<div class="section-divider"></div>
+
+<section id="withdrawal"><div class="wrap">
+  <div class="section-label">5 · Diritto di recesso</div>
+  <div class="card">
+    <div class="body">
+      <p><strong>Se sei un consumatore nell'Unione europea hai 14 giorni per ripensarci, e rispettiamo questo diritto per intero.</strong></p>
+      <p>Puoi recedere dall'abbonamento entro 14 giorni dalla sottoscrizione, per qualsiasi motivo e senza doverlo indicare. Rimborseremo l'intero importo del periodo in corso, anche se nel frattempo hai già ricevuto dei segnali. Al momento del pagamento non ti chiediamo di rinunciare a questo diritto.</p>
+      <p>Per recedere basta scrivere a <a href="mailto:apaquant@proton.me">apaquant@proton.me</a>
+      dall'indirizzo usato per la sottoscrizione. Basta una frase, non c'è nessun modulo da compilare. Confermeremo e rimborseremo sul metodo di pagamento originale, di norma entro pochi giorni lavorativi.</p>
+    </div>
+  </div>
+</div></section>
+
+<div class="section-divider"></div>
+
+<section id="cancel"><div class="wrap">
+  <div class="section-label">6 · Disdetta e rimborsi dopo i 14 giorni</div>
+  <div class="body">
+    <p>Puoi disdire in qualsiasi momento, dal link presente in ogni ricevuta di Stripe o scrivendoci via email. La disdetta blocca il rinnovo successivo; l'accesso resta attivo fino alla fine del periodo già pagato e poi viene revocato dal canale.</p>
+    <p>Trascorsi i 14 giorni per il recesso, di regola non rimborsiamo i periodi parzialmente utilizzati, perché il servizio è stato erogato. Rimborsiamo invece per intero se non abbiamo erogato il servizio: un'interruzione prolungata, o un periodo in cui non è stato pubblicato un aggiornamento dovuto. Se pensi che sia il tuo caso, scrivici.</p>
+    <p>Possiamo chiudere noi un abbonamento, rimborsando in proporzione il periodo non utilizzato, se le condizioni della sezione 8 non vengono rispettate.</p>
+  </div>
+</div></section>
+
+<div class="section-divider"></div>
+
+<section id="delivery"><div class="wrap">
+  <div class="section-label">7 · Erogazione e disponibilità</div>
+  <div class="body">
+    <p>Il servizio viene erogato tramite un canale Telegram privato, per il quale serve un account Telegram. Dopo il pagamento riceverai un link di invito monouso valido 24 ore; se scade prima che tu lo usi, scrivici e te ne invieremo un altro.</p>
+    <p><strong>I periodi di silenzio sono normali.</strong> APA ETF Signals rivede il portafoglio all'incirca una volta al mese; fra una revisione e l'altra non c'è nulla da pubblicare e non viene inviato nulla. Il silenzio non è un disservizio.</p>
+    <p>Dipendiamo da Telegram, da Stripe e dai fornitori di dati di mercato, nessuno dei quali è sotto il nostro controllo. Ci impegniamo a pubblicare con regolarità e ad avvisarti se qualcosa non funziona, ma non possiamo garantire una disponibilità ininterrotta. Se Telegram non fosse più disponibile, contatteremo gli abbonati all'indirizzo email usato al momento del pagamento.</p>
+  </div>
+</div></section>
+
+<div class="section-divider"></div>
+
+<section id="use"><div class="wrap">
+  <div class="section-label">8 · Uso consentito</div>
+  <div class="body">
+    <p>Il tuo abbonamento è <strong>personale e non cedibile</strong>. A un abbonamento corrisponde un solo account Telegram; il nostro sistema non eroga lo stesso abbonamento a un secondo account.</p>
+    <p>Ti chiediamo di non inoltrare, ripubblicare, rivendere o ridistribuire sistematicamente i contenuti dei canali, né di usarli per gestire un servizio concorrente. Tutto ciò che pubblichiamo (la metodologia, i parametri, i risultati storici e i segnali stessi) resta di nostra proprietà intellettuale; l'abbonamento ti concede una licenza personale per leggerlo e utilizzarlo, nient'altro.</p>
+    <p>Naturalmente puoi parlare con chi vuoi di quello che fai con i tuoi soldi.</p>
+  </div>
+</div></section>
+
+<div class="section-divider"></div>
+
+<section id="liability"><div class="wrap">
+  <div class="section-label">9 · Responsabilità</div>
+  <div class="body">
+    <p>Ci assumiamo la responsabilità di erogare il servizio descritto, e nulla di quanto scritto qui limita la nostra responsabilità per dolo, per morte o lesioni personali causate da negligenza, o per qualsiasi altro caso in cui la legge non consente limitazioni, compresi i tuoi diritti di consumatore previsti dalla legge, che queste condizioni non pregiudicano.</p>
+    <p>Al di fuori di questi casi, poiché non conosciamo la tua situazione e non ti forniamo consulenza, non rispondiamo delle perdite di trading, delle decisioni che prendi sulla base di ciò che pubblichiamo né delle differenze fra le ipotesi del nostro modello e i prezzi che ottieni realmente. Per ogni altro aspetto, la nostra responsabilità complessiva è limitata all'importo che ci hai pagato nei dodici mesi precedenti la richiesta.</p>
+  </div>
+</div></section>
+
+<div class="section-divider"></div>
+
+<section id="privacy"><div class="wrap">
+  <div class="section-label">10 · Privacy</div>
+  <div class="body">
+    <p>Il titolare del trattamento è Pietro Aldo Arriciati, contattabile all'indirizzo
+    <a href="mailto:apaquant@proton.me">apaquant@proton.me</a>.</p>
+
+    <h3>Quali dati conserviamo e perché</h3>
+    <table>
+      <tbody><tr><th>Dati</th><th>Finalità</th><th>Base giuridica</th></tr>
+      <tr><td>Indirizzo email</td><td>Identificare l'abbonamento, inviarti l'invito e contattarti in merito al servizio</td><td>Esecuzione del contratto</td></tr>
+      <tr><td>ID e nome utente Telegram</td><td>Concedere l'accesso al canale e revocarlo alla fine dell'abbonamento</td><td>Esecuzione del contratto</td></tr>
+      <tr><td>Stato e scadenza dell'abbonamento</td><td>Sapere chi ha accesso in quel momento
+        </td><td>Esecuzione del contratto</td></tr>
+      <tr><td>Dati dei pagamenti</td><td>Obblighi contabili e fiscali</td>
+        <td>Obbligo di legge</td></tr>
+    </tbody></table>
+    <p>Non raccogliamo il tuo nome, il tuo indirizzo, la tua data di nascita né alcuna informazione finanziaria che ti riguardi, e non vediamo mai i dati della tua carta. Non ti profiliamo e non ti inviamo comunicazioni commerciali, a meno che tu non le richieda.</p>
+
+    <h3>Chi altro tratta i dati</h3>
+    <ul>
+      <li><strong>Stripe</strong> — pagamenti, fatturazione e gestione degli abbonamenti.</li>
+      <li><strong>Telegram</strong> — invio dei segnali. Telegram vede il tuo account come membro del canale.</li>
+      <li><strong>GitHub</strong> — hosting di questo sito. I suoi server registrano le richieste, compresi gli indirizzi IP, come qualsiasi server web.</li>
+      <li><strong>Google Fonts</strong> — questo sito carica i caratteri tipografici dai server di Google, quindi al caricamento della pagina il tuo indirizzo IP viene trasmesso a Google.</li>
+    </ul>
+    <p>Alcuni di questi soggetti trasferiscono dati fuori dall'Unione europea, con le garanzie descritte nelle rispettive informative sulla privacy, che ti invitiamo a leggere.</p>
+
+    <h3>Per quanto tempo, e i tuoi diritti</h3>
+    <p>I dati dell'abbonamento sono conservati finché l'abbonamento è attivo e per i 24 mesi successivi, così da poter rispondere a domande sugli accessi passati. I dati di pagamento e di fatturazione sono conservati per 10 anni, come richiesto dalla normativa fiscale italiana.</p>
+    <p>Puoi chiederci una copia dei tuoi dati, la loro rettifica o cancellazione, la limitazione del trattamento od opporti a esso, oppure riceverli in un formato portabile. Scrivi a
+    <a href="mailto:apaquant@proton.me">apaquant@proton.me</a> e ti risponderemo entro 30 giorni. Se non sei soddisfatto, puoi presentare reclamo al Garante per la protezione dei dati personali (<a href="https://www.garanteprivacy.it">garanteprivacy.it</a>) o all'autorità del tuo paese.</p>
+
+    <h3>Cookie</h3>
+    <p>Questo sito non imposta cookie e non utilizza strumenti di analisi o di tracciamento pubblicitario. Le pagine di pagamento, ospitate da Stripe, usano i cookie necessari a elaborare il pagamento e a prevenire le frodi.</p>
+  </div>
+</div></section>
+
+<div class="section-divider"></div>
+
+<section id="law"><div class="wrap">
+  <div class="section-label">11 · Legge applicabile, modifiche e controversie</div>
+  <div class="body">
+    <p>Queste condizioni sono regolate dalla legge italiana. Se sei un consumatore, conservi la tutela delle norme inderogabili del paese in cui risiedi e puoi agire davanti ai giudici di quel paese.</p>
+    <p>Se qualcosa non va, scrivici prima di tutto: quasi sempre basta una email. Se non fosse sufficiente, i consumatori dell'Unione europea possono rivolgersi alla piattaforma per la risoluzione online delle controversie della Commissione europea su <a href="https://ec.europa.eu/consumers/odr">ec.europa.eu/consumers/odr</a>.</p>
+    <p>Possiamo aggiornare queste condizioni. Le modifiche si applicano ai rinnovi e ai nuovi abbonamenti dalla data di pubblicazione, e in caso di modifiche sostanziali lo comunicheremo agli abbonati nel canale. La data qui sotto indica la versione in vigore.</p>
+  </div>
+</div></section>
+
+<footer>
+  <p>APA Quant · <a href="mailto:apaquant@proton.me">apaquant@proton.me</a> ·
+  <a href="index-it.html">Home</a> · <a href="etf-signals-it.html">Metodologia ETF</a> ·
+  <a href="overview-it.html">Istituzionali</a></p>
+  <p>Versione in vigore dal 22 settembre 2026. Traduzione italiana pubblicata il 27 novembre 2026.</p>
+</footer>
+
+
+
+</body></html>
